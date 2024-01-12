@@ -1,0 +1,620 @@
+[11/27/2023 14:37:02] {options.py:447} INFO - 
+            accumulation_steps: 1                                       
+                         alpha: 1.0                                     
+                         beta2: 0.999                                   
+                checkpoint_dir: /home/016029585/atlas/atlas_data/experiments/mcq_case_10	(default: ./checkpoint/)
+                          clip: 1.0                                     
+                   closed_book: False                                   
+  compute_crossattention_stats: False                                   
+                decoder_format: None                                    
+         decoder_prompt_format: None                                    
+                        device: cuda:0                                  	(default: None)
+           dont_write_passages: False                                   
+                       dropout: 0.1                                     
+                encoder_format: {query} title: {title} context: {text}  
+                       epsilon: 1e-06                                   
+                     eval_data: ['/home/016029585/atlas/unified_data/case_2/eval_data_50.jsonl']	(default: [])
+                     eval_freq: 30                                      	(default: 500)
+               faiss_code_size: None                                    
+              faiss_index_type: flat                                    
+  filtering_overretrieve_ratio: 2                                       
+        freeze_retriever_steps: -1                                      
+     generation_length_penalty: 1.0                                     
+         generation_max_length: 128                                     
+         generation_min_length: None                                    
+          generation_num_beams: 1                                       
+                   global_rank: 0                                       	(default: None)
+               gold_score_mode: ppmean                                  
+                    index_mode: flat                                    
+                is_distributed: True                                    	(default: None)
+                       is_main: True                                    	(default: None)
+                  is_slurm_job: True                                    	(default: None)
+               load_index_path: None                                    
+                    local_rank: 0                                       	(default: -1)
+                      log_freq: 4                                       	(default: 100)
+                            lr: 4e-05                                   	(default: 0.0001)
+                  lr_retriever: 4e-05                                   	(default: 1e-05)
+                     main_addr: cs001                                   	(default: None)
+                     main_port: 15382                                   	(default: -1)
+          max_lm_context_ratio: 0.5                                     
+                  max_passages: -1                                      
+          min_lm_context_ratio: 0.5                                     
+     min_words_per_lm_instance: None                                    
+    mlm_mean_noise_span_length: 3                                       
+             mlm_noise_density: 0.15                                    
+                    model_path: /home/016029585/atlas/atlas_data/models/atlas/large/	(default: none)
+                     multi_gpu: False                                   	(default: None)
+                    multi_node: False                                   	(default: None)
+multiple_choice_eval_permutations: cyclic                                  	(default: single)
+   multiple_choice_num_options: 4                                       
+multiple_choice_train_permutations: all                                     	(default: single)
+                     n_context: 30                                      	(default: 1)
+                n_gpu_per_node: 1                                       	(default: None)
+                       n_nodes: 1                                       	(default: None)
+n_to_rerank_with_retrieve_with_rerank: 128                                     
+                          name: mcq_train_10                            	(default: experiment_name)
+                       node_id: 0                                       	(default: None)
+                      passages: ['/home/016029585/atlas/unified_data/unified_passages.jsonl']	(default: None)
+            per_gpu_batch_size: 1                                       
+   per_gpu_embedder_batch_size: 512                                     
+                     precision: fp32                                    
+              qa_prompt_format: question: {question} answer: <extra_id_0>
+ query_side_retriever_training: True                                    	(default: False)
+             reader_model_type: google/t5-large-lm-adapt                	(default: None)
+                 refresh_index: -1                                      
+                 retrieve_only: False                                   
+          retrieve_with_rerank: False                                   
+              retriever_format: {title} {text}                          
+          retriever_model_path: facebook/contriever                     
+           retriever_n_context: 30                                      	(default: 5)
+                     save_freq: 30                                      	(default: 5000)
+           save_index_n_shards: 1                                       	(default: 128)
+               save_index_path: /home/016029585/atlas/atlas_data/experiments/mcq_case_10/mcq_train_10/saved_index	(default: None)
+                save_optimizer: False                                   
+                     scheduler: linear                                  	(default: cosine)
+               scheduler_steps: None                                    
+                          seed: 0                                       
+                   shard_grads: True                                    	(default: False)
+                   shard_optim: True                                    	(default: False)
+                       shuffle: True                                    	(default: False)
+              target_maxlength: 200                                     	(default: None)
+                          task: multiple_choice                         	(default: None)
+              temperature_gold: 0.01                                    
+             temperature_score: 0.01                                    
+                text_maxlength: 256                                     	(default: 200)
+                   total_steps: 1000                                    
+                    train_data: ['/home/016029585/atlas/unified_data/case_2/train_data_150.jsonl']	(default: [])
+               train_retriever: True                                    	(default: False)
+             use_file_passages: False                                   
+use_gradient_checkpoint_reader: True                                    	(default: False)
+use_gradient_checkpoint_retriever: True                                    	(default: False)
+                  warmup_steps: 5                                       	(default: 1000)
+                  weight_decay: 0.01                                    	(default: 0.1)
+                    world_size: 1                                       	(default: None)
+                 write_results: True                                    	(default: False)
+
+[11/27/2023 14:37:02] {train.py:193} INFO - world size: 1
+[11/27/2023 14:37:02] {index_io.py:87} INFO - Loading passages from: ['/home/016029585/atlas/unified_data/unified_passages.jsonl']
+[11/27/2023 14:37:02] {model_io.py:130} INFO - Loading /lts/home/016029585/atlas/atlas_data/models/atlas/large
+[11/27/2023 14:37:02] {model_io.py:131} INFO - loading checkpoint /lts/home/016029585/atlas/atlas_data/models/atlas/large/model.pth.tar
+[11/27/2023 14:39:53] {options.py:447} INFO - 
+            accumulation_steps: 1                                       
+                         alpha: 1.0                                     
+                         beta2: 0.999                                   
+                checkpoint_dir: /home/016029585/atlas/atlas_data/experiments/mcq_case_10	(default: ./checkpoint/)
+                          clip: 1.0                                     
+                   closed_book: False                                   
+  compute_crossattention_stats: False                                   
+                decoder_format: None                                    
+         decoder_prompt_format: None                                    
+                        device: cuda:0                                  	(default: None)
+           dont_write_passages: False                                   
+                       dropout: 0.1                                     
+                encoder_format: {query} title: {title} context: {text}  
+                       epsilon: 1e-06                                   
+                     eval_data: ['/home/016029585/atlas/unified_data/case_2/eval_data_50.jsonl']	(default: [])
+                     eval_freq: 30                                      	(default: 500)
+               faiss_code_size: None                                    
+              faiss_index_type: flat                                    
+  filtering_overretrieve_ratio: 2                                       
+        freeze_retriever_steps: -1                                      
+     generation_length_penalty: 1.0                                     
+         generation_max_length: 128                                     
+         generation_min_length: None                                    
+          generation_num_beams: 1                                       
+                   global_rank: 0                                       	(default: None)
+               gold_score_mode: ppmean                                  
+                    index_mode: flat                                    
+                is_distributed: True                                    	(default: None)
+                       is_main: True                                    	(default: None)
+                  is_slurm_job: True                                    	(default: None)
+               load_index_path: None                                    
+                    local_rank: 0                                       	(default: -1)
+                      log_freq: 4                                       	(default: 100)
+                            lr: 4e-05                                   	(default: 0.0001)
+                  lr_retriever: 4e-05                                   	(default: 1e-05)
+                     main_addr: cs001                                   	(default: None)
+                     main_port: 15580                                   	(default: -1)
+          max_lm_context_ratio: 0.5                                     
+                  max_passages: -1                                      
+          min_lm_context_ratio: 0.5                                     
+     min_words_per_lm_instance: None                                    
+    mlm_mean_noise_span_length: 3                                       
+             mlm_noise_density: 0.15                                    
+                    model_path: /home/016029585/atlas/atlas_data/models/atlas/large/	(default: none)
+                     multi_gpu: False                                   	(default: None)
+                    multi_node: False                                   	(default: None)
+multiple_choice_eval_permutations: cyclic                                  	(default: single)
+   multiple_choice_num_options: 4                                       
+multiple_choice_train_permutations: all                                     	(default: single)
+                     n_context: 30                                      	(default: 1)
+                n_gpu_per_node: 1                                       	(default: None)
+                       n_nodes: 1                                       	(default: None)
+n_to_rerank_with_retrieve_with_rerank: 128                                     
+                          name: mcq_train_10                            	(default: experiment_name)
+                       node_id: 0                                       	(default: None)
+                      passages: ['/home/016029585/atlas/unified_data/unified_passages.jsonl']	(default: None)
+            per_gpu_batch_size: 1                                       
+   per_gpu_embedder_batch_size: 512                                     
+                     precision: fp32                                    
+              qa_prompt_format: question: {question} answer: <extra_id_0>
+ query_side_retriever_training: True                                    	(default: False)
+             reader_model_type: google/t5-large-lm-adapt                	(default: None)
+                 refresh_index: -1                                      
+                 retrieve_only: False                                   
+          retrieve_with_rerank: False                                   
+              retriever_format: {title} {text}                          
+          retriever_model_path: facebook/contriever                     
+           retriever_n_context: 30                                      	(default: 5)
+                     save_freq: 30                                      	(default: 5000)
+           save_index_n_shards: 1                                       	(default: 128)
+               save_index_path: /home/016029585/atlas/atlas_data/experiments/mcq_case_10/mcq_train_10/saved_index	(default: None)
+                save_optimizer: False                                   
+                     scheduler: linear                                  	(default: cosine)
+               scheduler_steps: None                                    
+                          seed: 0                                       
+                   shard_grads: True                                    	(default: False)
+                   shard_optim: True                                    	(default: False)
+                       shuffle: True                                    	(default: False)
+              target_maxlength: 200                                     	(default: None)
+                          task: multiple_choice                         	(default: None)
+              temperature_gold: 0.01                                    
+             temperature_score: 0.01                                    
+                text_maxlength: 256                                     	(default: 200)
+                   total_steps: 1000                                    
+                    train_data: ['/home/016029585/atlas/unified_data/case_2/train_data_150.jsonl']	(default: [])
+               train_retriever: True                                    	(default: False)
+             use_file_passages: False                                   
+use_gradient_checkpoint_reader: True                                    	(default: False)
+use_gradient_checkpoint_retriever: True                                    	(default: False)
+                  warmup_steps: 5                                       	(default: 1000)
+                  weight_decay: 0.01                                    	(default: 0.1)
+                    world_size: 1                                       	(default: None)
+                 write_results: True                                    	(default: False)
+
+[11/27/2023 14:39:53] {train.py:193} INFO - world size: 1
+[11/27/2023 14:39:53] {index_io.py:87} INFO - Loading passages from: ['/home/016029585/atlas/unified_data/unified_passages.jsonl']
+[11/27/2023 14:39:53] {model_io.py:130} INFO - Loading /lts/home/016029585/atlas/atlas_data/models/atlas/large
+[11/27/2023 14:39:53] {model_io.py:131} INFO - loading checkpoint /lts/home/016029585/atlas/atlas_data/models/atlas/large/model.pth.tar
+[11/27/2023 15:04:36] {options.py:447} INFO - 
+            accumulation_steps: 1                                       
+                         alpha: 1.0                                     
+                         beta2: 0.999                                   
+                checkpoint_dir: /home/016029585/atlas/atlas_data/experiments/mcq_case_10	(default: ./checkpoint/)
+                          clip: 1.0                                     
+                   closed_book: False                                   
+  compute_crossattention_stats: False                                   
+                decoder_format: None                                    
+         decoder_prompt_format: None                                    
+                        device: cuda:0                                  	(default: None)
+           dont_write_passages: False                                   
+                       dropout: 0.1                                     
+                encoder_format: {query} title: {title} context: {text}  
+                       epsilon: 1e-06                                   
+                     eval_data: ['/home/016029585/atlas/unified_data/case_2/eval_data_50.jsonl']	(default: [])
+                     eval_freq: 30                                      	(default: 500)
+               faiss_code_size: None                                    
+              faiss_index_type: flat                                    
+  filtering_overretrieve_ratio: 2                                       
+        freeze_retriever_steps: -1                                      
+     generation_length_penalty: 1.0                                     
+         generation_max_length: 128                                     
+         generation_min_length: None                                    
+          generation_num_beams: 1                                       
+                   global_rank: 0                                       	(default: None)
+               gold_score_mode: ppmean                                  
+                    index_mode: flat                                    
+                is_distributed: True                                    	(default: None)
+                       is_main: True                                    	(default: None)
+                  is_slurm_job: True                                    	(default: None)
+               load_index_path: None                                    
+                    local_rank: 0                                       	(default: -1)
+                      log_freq: 4                                       	(default: 100)
+                            lr: 4e-05                                   	(default: 0.0001)
+                  lr_retriever: 4e-05                                   	(default: 1e-05)
+                     main_addr: cs001                                   	(default: None)
+                     main_port: 15794                                   	(default: -1)
+          max_lm_context_ratio: 0.5                                     
+                  max_passages: -1                                      
+          min_lm_context_ratio: 0.5                                     
+     min_words_per_lm_instance: None                                    
+    mlm_mean_noise_span_length: 3                                       
+             mlm_noise_density: 0.15                                    
+                    model_path: /home/016029585/atlas/atlas_data/models/atlas/large/	(default: none)
+                     multi_gpu: False                                   	(default: None)
+                    multi_node: False                                   	(default: None)
+multiple_choice_eval_permutations: cyclic                                  	(default: single)
+   multiple_choice_num_options: 4                                       
+multiple_choice_train_permutations: all                                     	(default: single)
+                     n_context: 30                                      	(default: 1)
+                n_gpu_per_node: 1                                       	(default: None)
+                       n_nodes: 1                                       	(default: None)
+n_to_rerank_with_retrieve_with_rerank: 128                                     
+                          name: mcq_train_10                            	(default: experiment_name)
+                       node_id: 0                                       	(default: None)
+                      passages: ['/home/016029585/atlas/unified_data/unified_passages.jsonl']	(default: None)
+            per_gpu_batch_size: 1                                       
+   per_gpu_embedder_batch_size: 512                                     
+                     precision: fp32                                    
+              qa_prompt_format: question: {question} answer: <extra_id_0>
+ query_side_retriever_training: True                                    	(default: False)
+             reader_model_type: google/t5-large-lm-adapt                	(default: None)
+                 refresh_index: -1                                      
+                 retrieve_only: False                                   
+          retrieve_with_rerank: False                                   
+              retriever_format: {title} {text}                          
+          retriever_model_path: facebook/contriever                     
+           retriever_n_context: 30                                      	(default: 5)
+                     save_freq: 30                                      	(default: 5000)
+           save_index_n_shards: 1                                       	(default: 128)
+               save_index_path: /home/016029585/atlas/atlas_data/experiments/mcq_case_10/mcq_train_10/saved_index	(default: None)
+                save_optimizer: False                                   
+                     scheduler: linear                                  	(default: cosine)
+               scheduler_steps: None                                    
+                          seed: 0                                       
+                   shard_grads: True                                    	(default: False)
+                   shard_optim: True                                    	(default: False)
+                       shuffle: True                                    	(default: False)
+              target_maxlength: 200                                     	(default: None)
+                          task: multiple_choice                         	(default: None)
+              temperature_gold: 0.01                                    
+             temperature_score: 0.01                                    
+                text_maxlength: 256                                     	(default: 200)
+                   total_steps: 1000                                    
+                    train_data: ['/home/016029585/atlas/unified_data/case_2/train_data_150.jsonl']	(default: [])
+               train_retriever: True                                    	(default: False)
+             use_file_passages: False                                   
+use_gradient_checkpoint_reader: True                                    	(default: False)
+use_gradient_checkpoint_retriever: True                                    	(default: False)
+                  warmup_steps: 5                                       	(default: 1000)
+                  weight_decay: 0.01                                    	(default: 0.1)
+                    world_size: 1                                       	(default: None)
+                 write_results: True                                    	(default: False)
+
+[11/27/2023 15:04:36] {train.py:193} INFO - world size: 1
+[11/27/2023 15:04:36] {index_io.py:87} INFO - Loading passages from: ['/home/016029585/atlas/unified_data/unified_passages.jsonl']
+[11/27/2023 15:04:36] {model_io.py:130} INFO - Loading /lts/home/016029585/atlas/atlas_data/models/atlas/large
+[11/27/2023 15:04:36] {model_io.py:131} INFO - loading checkpoint /lts/home/016029585/atlas/atlas_data/models/atlas/large/model.pth.tar
+[11/27/2023 15:04:55] {model_io.py:194} INFO - Model loaded from /home/016029585/atlas/atlas_data/models/atlas/large/
+[11/27/2023 15:04:55] {sharded_ddp.py:177} INFO - Training is not really distributed, single rank. Deactivating buckets
+[11/27/2023 15:04:55] {sharded_ddp.py:179} INFO - ShardedDDP bucket size: 0.00M parameters, model size 746.87M parameters
+[11/27/2023 15:04:55] {sharded_ddp.py:177} INFO - Training is not really distributed, single rank. Deactivating buckets
+[11/27/2023 15:04:55] {sharded_ddp.py:179} INFO - ShardedDDP bucket size: 0.00M parameters, model size 103.85M parameters
+[11/27/2023 15:04:55] {train.py:218} INFO - Start training
+[11/27/2023 15:04:59] {atlas.py:84} INFO - 1054 passages encoded on process: 0
+[11/27/2023 15:05:08] {train.py:147} INFO - 4 / 1000 | loss/reader_loss: 6.01 | loss/retriever_loss: 0.0877 | loss/train_loss: 6.09 | runtime/backward: 0.736 | runtime/forward: 0.799 | runtime/indexing: 1.54 | runtime/model_update: 0.799 | runtime/retrieve: 0.0547 | runtime/search: 0.00937 | runtime/train_step: 2.34 | lr: 3.3e-05 | Memory: 17.0 GiB
+[11/27/2023 15:05:18] {train.py:147} INFO - 8 / 1000 | loss/reader_loss: 2.51 | loss/retriever_loss: 0.12 | loss/train_loss: 2.63 | runtime/backward: 0.737 | runtime/forward: 0.754 | runtime/model_update: 0.803 | runtime/retrieve: 0.0166 | runtime/search: 0.00641 | runtime/train_step: 2.29 | lr: 4e-05 | Memory: 17.0 GiB
+[11/27/2023 15:05:27] {train.py:147} INFO - 12 / 1000 | loss/reader_loss: 1.16 | loss/retriever_loss: 0.0924 | loss/train_loss: 1.25 | runtime/backward: 0.739 | runtime/forward: 0.753 | runtime/model_update: 0.806 | runtime/retrieve: 0.0182 | runtime/search: 0.00798 | runtime/train_step: 2.3 | lr: 4e-05 | Memory: 17.0 GiB
+[11/27/2023 15:05:36] {train.py:147} INFO - 16 / 1000 | loss/reader_loss: 0.545 | loss/retriever_loss: 0.0877 | loss/train_loss: 0.633 | runtime/backward: 0.742 | runtime/forward: 0.748 | runtime/model_update: 0.807 | runtime/retrieve: 0.0181 | runtime/search: 0.00786 | runtime/train_step: 2.3 | lr: 4e-05 | Memory: 17.0 GiB
+[11/27/2023 15:05:45] {train.py:147} INFO - 20 / 1000 | loss/reader_loss: 0.591 | loss/retriever_loss: 0.0669 | loss/train_loss: 0.658 | runtime/backward: 0.722 | runtime/forward: 0.764 | runtime/model_update: 0.653 | runtime/retrieve: 0.0167 | runtime/search: 0.00653 | runtime/train_step: 2.14 | lr: 3.9e-05 | Memory: 17.0 GiB
+[11/27/2023 15:05:54] {train.py:147} INFO - 24 / 1000 | loss/reader_loss: 1.07 | loss/retriever_loss: 0.0849 | loss/train_loss: 1.15 | runtime/backward: 0.677 | runtime/forward: 0.838 | runtime/model_update: 0.909 | runtime/retrieve: 0.0214 | runtime/search: 0.0106 | runtime/train_step: 2.42 | lr: 3.9e-05 | Memory: 17.0 GiB
+[11/27/2023 15:06:04] {train.py:147} INFO - 28 / 1000 | loss/reader_loss: 0.583 | loss/retriever_loss: 0.0833 | loss/train_loss: 0.666 | runtime/backward: 0.675 | runtime/forward: 0.803 | runtime/model_update: 0.945 | runtime/retrieve: 0.0246 | runtime/search: 0.0145 | runtime/train_step: 2.42 | lr: 3.9e-05 | Memory: 17.0 GiB
+[11/27/2023 15:08:29] {util.py:249} INFO - Writing dataset with scores at /home/016029585/atlas/atlas_data/experiments/mcq_case_10/mcq_train_10/eval_data_50-step-30.jsonl
+[11/27/2023 15:08:29] {train.py:160} INFO - Dataset: eval_data_50.jsonl | 70.000 debiased_accuracy | 30.000 accuracy | 0.591 eval_loss
+[11/27/2023 15:08:49] {train.py:147} INFO - 32 / 1000 | loss/reader_loss: 0.658 | loss/retriever_loss: 0.0646 | loss/train_loss: 0.722 | runtime/backward: 0.685 | runtime/forward: 0.761 | runtime/model_update: 0.955 | runtime/retrieve: 0.0219 | runtime/search: 0.0113 | runtime/train_step: 2.4 | lr: 3.9e-05 | Memory: 17.0 GiB
+[11/27/2023 15:08:59] {train.py:147} INFO - 36 / 1000 | loss/reader_loss: 0.743 | loss/retriever_loss: 0.0718 | loss/train_loss: 0.815 | runtime/backward: 0.678 | runtime/forward: 0.836 | runtime/model_update: 0.909 | runtime/retrieve: 0.0327 | runtime/search: 0.0216 | runtime/train_step: 2.42 | lr: 3.9e-05 | Memory: 17.0 GiB
+[11/27/2023 15:09:09] {train.py:147} INFO - 40 / 1000 | loss/reader_loss: 0.921 | loss/retriever_loss: 0.0728 | loss/train_loss: 0.993 | runtime/backward: 0.672 | runtime/forward: 0.822 | runtime/model_update: 0.907 | runtime/retrieve: 0.0228 | runtime/search: 0.0119 | runtime/train_step: 2.4 | lr: 3.9e-05 | Memory: 17.0 GiB
+[11/27/2023 15:09:19] {train.py:147} INFO - 44 / 1000 | loss/reader_loss: 0.557 | loss/retriever_loss: 0.0585 | loss/train_loss: 0.616 | runtime/backward: 0.687 | runtime/forward: 0.833 | runtime/model_update: 0.941 | runtime/retrieve: 0.0208 | runtime/search: 0.0095 | runtime/train_step: 2.46 | lr: 3.9e-05 | Memory: 17.0 GiB
+[11/27/2023 15:09:28] {train.py:147} INFO - 48 / 1000 | loss/reader_loss: 0.576 | loss/retriever_loss: 0.0435 | loss/train_loss: 0.619 | runtime/backward: 0.691 | runtime/forward: 0.813 | runtime/model_update: 0.759 | runtime/retrieve: 0.026 | runtime/search: 0.0157 | runtime/train_step: 2.26 | lr: 3.8e-05 | Memory: 17.0 GiB
+[11/27/2023 15:09:37] {train.py:147} INFO - 52 / 1000 | loss/reader_loss: 0.58 | loss/retriever_loss: 0.0396 | loss/train_loss: 0.62 | runtime/backward: 0.729 | runtime/forward: 0.744 | runtime/model_update: 0.793 | runtime/retrieve: 0.0199 | runtime/search: 0.00927 | runtime/train_step: 2.27 | lr: 3.8e-05 | Memory: 17.0 GiB
+[11/27/2023 15:09:46] {train.py:147} INFO - 56 / 1000 | loss/reader_loss: 0.488 | loss/retriever_loss: 0.0638 | loss/train_loss: 0.551 | runtime/backward: 0.742 | runtime/forward: 0.762 | runtime/model_update: 0.773 | runtime/retrieve: 0.0185 | runtime/search: 0.00818 | runtime/train_step: 2.28 | lr: 3.8e-05 | Memory: 17.0 GiB
+[11/27/2023 15:09:55] {train.py:147} INFO - 60 / 1000 | loss/reader_loss: 0.408 | loss/retriever_loss: 0.0698 | loss/train_loss: 0.478 | runtime/backward: 0.725 | runtime/forward: 0.744 | runtime/model_update: 0.814 | runtime/retrieve: 0.0168 | runtime/search: 0.00666 | runtime/train_step: 2.28 | lr: 3.8e-05 | Memory: 17.0 GiB
+[11/27/2023 15:11:55] {util.py:249} INFO - Writing dataset with scores at /home/016029585/atlas/atlas_data/experiments/mcq_case_10/mcq_train_10/eval_data_50-step-60.jsonl
+[11/27/2023 15:11:55] {train.py:160} INFO - Dataset: eval_data_50.jsonl | 62.000 debiased_accuracy | 25.000 accuracy | 0.547 eval_loss
+[11/27/2023 15:12:21] {train.py:147} INFO - 64 / 1000 | loss/reader_loss: 0.499 | loss/retriever_loss: 0.0641 | loss/train_loss: 0.563 | runtime/backward: 0.734 | runtime/forward: 0.744 | runtime/model_update: 0.813 | runtime/retrieve: 0.0187 | runtime/search: 0.0085 | runtime/train_step: 2.29 | lr: 3.8e-05 | Memory: 17.0 GiB
+[11/27/2023 15:12:30] {train.py:147} INFO - 68 / 1000 | loss/reader_loss: 0.46 | loss/retriever_loss: 0.0508 | loss/train_loss: 0.511 | runtime/backward: 0.729 | runtime/forward: 0.746 | runtime/model_update: 0.818 | runtime/retrieve: 0.0193 | runtime/search: 0.00913 | runtime/train_step: 2.29 | lr: 3.8e-05 | Memory: 17.0 GiB
+[11/27/2023 15:12:39] {train.py:147} INFO - 72 / 1000 | loss/reader_loss: 0.342 | loss/retriever_loss: 0.0567 | loss/train_loss: 0.399 | runtime/backward: 0.731 | runtime/forward: 0.739 | runtime/model_update: 0.828 | runtime/retrieve: 0.0176 | runtime/search: 0.00762 | runtime/train_step: 2.3 | lr: 3.8e-05 | Memory: 17.0 GiB
+[11/27/2023 15:12:49] {train.py:147} INFO - 76 / 1000 | loss/reader_loss: 0.956 | loss/retriever_loss: 0.0585 | loss/train_loss: 1.01 | runtime/backward: 0.733 | runtime/forward: 0.757 | runtime/model_update: 0.846 | runtime/retrieve: 0.0192 | runtime/search: 0.00919 | runtime/train_step: 2.34 | lr: 3.7e-05 | Memory: 17.0 GiB
+[11/27/2023 15:12:58] {train.py:147} INFO - 80 / 1000 | loss/reader_loss: 0.439 | loss/retriever_loss: 0.0409 | loss/train_loss: 0.48 | runtime/backward: 0.727 | runtime/forward: 0.745 | runtime/model_update: 0.818 | runtime/retrieve: 0.0181 | runtime/search: 0.00789 | runtime/train_step: 2.29 | lr: 3.7e-05 | Memory: 17.0 GiB
+[11/27/2023 15:13:07] {train.py:147} INFO - 84 / 1000 | loss/reader_loss: 0.596 | loss/retriever_loss: 0.0701 | loss/train_loss: 0.667 | runtime/backward: 0.73 | runtime/forward: 0.745 | runtime/model_update: 0.816 | runtime/retrieve: 0.0182 | runtime/search: 0.00807 | runtime/train_step: 2.29 | lr: 3.7e-05 | Memory: 17.0 GiB
+[11/27/2023 15:13:16] {train.py:147} INFO - 88 / 1000 | loss/reader_loss: 0.429 | loss/retriever_loss: 0.0681 | loss/train_loss: 0.497 | runtime/backward: 0.736 | runtime/forward: 0.753 | runtime/model_update: 0.821 | runtime/retrieve: 0.0184 | runtime/search: 0.00825 | runtime/train_step: 2.31 | lr: 3.7e-05 | Memory: 17.0 GiB
+[11/27/2023 15:14:45] {util.py:249} INFO - Writing dataset with scores at /home/016029585/atlas/atlas_data/experiments/mcq_case_10/mcq_train_10/eval_data_50-step-90.jsonl
+[11/27/2023 15:14:45] {train.py:160} INFO - Dataset: eval_data_50.jsonl | 70.000 debiased_accuracy | 31.000 accuracy | 0.573 eval_loss
+[11/27/2023 15:15:00] {train.py:147} INFO - 92 / 1000 | loss/reader_loss: 0.809 | loss/retriever_loss: 0.0624 | loss/train_loss: 0.871 | runtime/backward: 0.65 | runtime/forward: 0.665 | runtime/model_update: 0.493 | runtime/retrieve: 0.0141 | runtime/search: 0.00393 | runtime/train_step: 1.81 | lr: 3.7e-05 | Memory: 17.0 GiB
+[11/27/2023 15:15:05] {train.py:147} INFO - 96 / 1000 | loss/reader_loss: 0.482 | loss/retriever_loss: 0.0696 | loss/train_loss: 0.552 | runtime/backward: 0.577 | runtime/forward: 0.555 | runtime/model_update: 0.174 | runtime/retrieve: 0.0117 | runtime/search: 0.00161 | runtime/train_step: 1.31 | lr: 3.7e-05 | Memory: 17.0 GiB
+[11/27/2023 15:15:10] {train.py:147} INFO - 100 / 1000 | loss/reader_loss: 0.444 | loss/retriever_loss: 0.0539 | loss/train_loss: 0.498 | runtime/backward: 0.578 | runtime/forward: 0.557 | runtime/model_update: 0.172 | runtime/retrieve: 0.0121 | runtime/search: 0.00164 | runtime/train_step: 1.31 | lr: 3.7e-05 | Memory: 17.0 GiB
+[11/27/2023 15:15:16] {train.py:147} INFO - 104 / 1000 | loss/reader_loss: 0.643 | loss/retriever_loss: 0.0603 | loss/train_loss: 0.703 | runtime/backward: 0.578 | runtime/forward: 0.559 | runtime/model_update: 0.181 | runtime/retrieve: 0.0124 | runtime/search: 0.00178 | runtime/train_step: 1.32 | lr: 3.6e-05 | Memory: 17.0 GiB
+[11/27/2023 15:15:21] {train.py:147} INFO - 108 / 1000 | loss/reader_loss: 0.643 | loss/retriever_loss: 0.0584 | loss/train_loss: 0.701 | runtime/backward: 0.58 | runtime/forward: 0.559 | runtime/model_update: 0.174 | runtime/retrieve: 0.0122 | runtime/search: 0.00176 | runtime/train_step: 1.31 | lr: 3.6e-05 | Memory: 17.0 GiB
+[11/27/2023 15:15:26] {train.py:147} INFO - 112 / 1000 | loss/reader_loss: 0.641 | loss/retriever_loss: 0.0917 | loss/train_loss: 0.733 | runtime/backward: 0.576 | runtime/forward: 0.557 | runtime/model_update: 0.172 | runtime/retrieve: 0.0118 | runtime/search: 0.00156 | runtime/train_step: 1.3 | lr: 3.6e-05 | Memory: 17.0 GiB
+[11/27/2023 15:15:31] {train.py:147} INFO - 116 / 1000 | loss/reader_loss: 0.358 | loss/retriever_loss: 0.0522 | loss/train_loss: 0.41 | runtime/backward: 0.577 | runtime/forward: 0.555 | runtime/model_update: 0.171 | runtime/retrieve: 0.0116 | runtime/search: 0.00152 | runtime/train_step: 1.3 | lr: 3.6e-05 | Memory: 17.0 GiB
+[11/27/2023 15:15:37] {train.py:147} INFO - 120 / 1000 | loss/reader_loss: 0.41 | loss/retriever_loss: 0.0532 | loss/train_loss: 0.463 | runtime/backward: 0.578 | runtime/forward: 0.556 | runtime/model_update: 0.171 | runtime/retrieve: 0.0116 | runtime/search: 0.00155 | runtime/train_step: 1.31 | lr: 3.6e-05 | Memory: 17.0 GiB
+[11/27/2023 15:17:03] {util.py:249} INFO - Writing dataset with scores at /home/016029585/atlas/atlas_data/experiments/mcq_case_10/mcq_train_10/eval_data_50-step-120.jsonl
+[11/27/2023 15:17:03] {train.py:160} INFO - Dataset: eval_data_50.jsonl | 72.000 debiased_accuracy | 25.000 accuracy | 0.538 eval_loss
+[11/27/2023 15:17:29] {train.py:147} INFO - 124 / 1000 | loss/reader_loss: 0.589 | loss/retriever_loss: 0.0631 | loss/train_loss: 0.653 | runtime/backward: 0.796 | runtime/forward: 0.808 | runtime/model_update: 0.537 | runtime/retrieve: 0.013 | runtime/search: 0.00253 | runtime/train_step: 2.14 | lr: 3.6e-05 | Memory: 17.0 GiB
+[11/27/2023 15:17:38] {train.py:147} INFO - 128 / 1000 | loss/reader_loss: 0.653 | loss/retriever_loss: 0.0581 | loss/train_loss: 0.711 | runtime/backward: 0.686 | runtime/forward: 0.817 | runtime/model_update: 0.762 | runtime/retrieve: 0.0244 | runtime/search: 0.0138 | runtime/train_step: 2.27 | lr: 3.6e-05 | Memory: 17.0 GiB
+[11/27/2023 15:17:44] {train.py:147} INFO - 132 / 1000 | loss/reader_loss: 0.578 | loss/retriever_loss: 0.0541 | loss/train_loss: 0.633 | runtime/backward: 0.637 | runtime/forward: 0.598 | runtime/model_update: 0.325 | runtime/retrieve: 0.0128 | runtime/search: 0.00183 | runtime/train_step: 1.56 | lr: 3.5e-05 | Memory: 17.0 GiB
+[11/27/2023 15:17:49] {train.py:147} INFO - 136 / 1000 | loss/reader_loss: 0.48 | loss/retriever_loss: 0.0279 | loss/train_loss: 0.508 | runtime/backward: 0.579 | runtime/forward: 0.557 | runtime/model_update: 0.173 | runtime/retrieve: 0.012 | runtime/search: 0.00168 | runtime/train_step: 1.31 | lr: 3.5e-05 | Memory: 17.0 GiB
+[11/27/2023 15:17:55] {train.py:147} INFO - 140 / 1000 | loss/reader_loss: 0.455 | loss/retriever_loss: 0.0672 | loss/train_loss: 0.522 | runtime/backward: 0.581 | runtime/forward: 0.557 | runtime/model_update: 0.172 | runtime/retrieve: 0.0119 | runtime/search: 0.00169 | runtime/train_step: 1.31 | lr: 3.5e-05 | Memory: 17.0 GiB
+[11/27/2023 15:18:00] {train.py:147} INFO - 144 / 1000 | loss/reader_loss: 0.56 | loss/retriever_loss: 0.058 | loss/train_loss: 0.618 | runtime/backward: 0.592 | runtime/forward: 0.563 | runtime/model_update: 0.182 | runtime/retrieve: 0.0141 | runtime/search: 0.00182 | runtime/train_step: 1.34 | lr: 3.5e-05 | Memory: 17.0 GiB
+[11/27/2023 15:18:09] {train.py:147} INFO - 148 / 1000 | loss/reader_loss: 0.481 | loss/retriever_loss: 0.0527 | loss/train_loss: 0.534 | runtime/backward: 0.631 | runtime/forward: 0.688 | runtime/model_update: 0.881 | runtime/retrieve: 0.0237 | runtime/search: 0.0116 | runtime/train_step: 2.2 | lr: 3.5e-05 | Memory: 17.0 GiB
+[11/27/2023 15:19:34] {util.py:249} INFO - Writing dataset with scores at /home/016029585/atlas/atlas_data/experiments/mcq_case_10/mcq_train_10/eval_data_50-step-150.jsonl
+[11/27/2023 15:19:35] {train.py:160} INFO - Dataset: eval_data_50.jsonl | 78.000 debiased_accuracy | 43.000 accuracy | 0.432 eval_loss
+[11/27/2023 15:19:55] {train.py:147} INFO - 152 / 1000 | loss/reader_loss: 0.483 | loss/retriever_loss: 0.0325 | loss/train_loss: 0.516 | runtime/backward: 0.576 | runtime/forward: 0.571 | runtime/model_update: 0.172 | runtime/retrieve: 0.0121 | runtime/search: 0.00169 | runtime/train_step: 1.32 | lr: 3.5e-05 | Memory: 17.0 GiB
+[11/27/2023 15:20:01] {train.py:147} INFO - 156 / 1000 | loss/reader_loss: 0.41 | loss/retriever_loss: 0.0842 | loss/train_loss: 0.494 | runtime/backward: 0.592 | runtime/forward: 0.563 | runtime/model_update: 0.183 | runtime/retrieve: 0.0122 | runtime/search: 0.00179 | runtime/train_step: 1.34 | lr: 3.5e-05 | Memory: 17.0 GiB
+[11/27/2023 15:20:06] {train.py:147} INFO - 160 / 1000 | loss/reader_loss: 0.456 | loss/retriever_loss: 0.0419 | loss/train_loss: 0.498 | runtime/backward: 0.611 | runtime/forward: 0.588 | runtime/model_update: 0.185 | runtime/retrieve: 0.0122 | runtime/search: 0.00173 | runtime/train_step: 1.38 | lr: 3.4e-05 | Memory: 17.0 GiB
+[11/27/2023 15:20:11] {train.py:147} INFO - 164 / 1000 | loss/reader_loss: 0.666 | loss/retriever_loss: 0.0774 | loss/train_loss: 0.743 | runtime/backward: 0.575 | runtime/forward: 0.555 | runtime/model_update: 0.174 | runtime/retrieve: 0.0118 | runtime/search: 0.00159 | runtime/train_step: 1.3 | lr: 3.4e-05 | Memory: 17.0 GiB
+[11/27/2023 15:20:17] {train.py:147} INFO - 168 / 1000 | loss/reader_loss: 0.464 | loss/retriever_loss: 0.0754 | loss/train_loss: 0.539 | runtime/backward: 0.575 | runtime/forward: 0.554 | runtime/model_update: 0.172 | runtime/retrieve: 0.0116 | runtime/search: 0.0015 | runtime/train_step: 1.3 | lr: 3.4e-05 | Memory: 17.0 GiB
+[11/27/2023 15:20:22] {train.py:147} INFO - 172 / 1000 | loss/reader_loss: 0.472 | loss/retriever_loss: 0.102 | loss/train_loss: 0.574 | runtime/backward: 0.578 | runtime/forward: 0.563 | runtime/model_update: 0.18 | runtime/retrieve: 0.0119 | runtime/search: 0.0016 | runtime/train_step: 1.32 | lr: 3.4e-05 | Memory: 17.0 GiB
+[11/27/2023 15:20:31] {train.py:147} INFO - 176 / 1000 | loss/reader_loss: 0.392 | loss/retriever_loss: 0.0598 | loss/train_loss: 0.451 | runtime/backward: 0.675 | runtime/forward: 0.684 | runtime/model_update: 0.84 | runtime/retrieve: 0.0178 | runtime/search: 0.00746 | runtime/train_step: 2.2 | lr: 3.4e-05 | Memory: 17.0 GiB
+[11/27/2023 15:20:36] {train.py:147} INFO - 180 / 1000 | loss/reader_loss: 0.379 | loss/retriever_loss: 0.0688 | loss/train_loss: 0.448 | runtime/backward: 0.576 | runtime/forward: 0.557 | runtime/model_update: 0.172 | runtime/retrieve: 0.0117 | runtime/search: 0.00151 | runtime/train_step: 1.3 | lr: 3.4e-05 | Memory: 17.0 GiB
+[11/27/2023 15:21:59] {util.py:249} INFO - Writing dataset with scores at /home/016029585/atlas/atlas_data/experiments/mcq_case_10/mcq_train_10/eval_data_50-step-180.jsonl
+[11/27/2023 15:21:59] {train.py:160} INFO - Dataset: eval_data_50.jsonl | 84.000 debiased_accuracy | 31.000 accuracy | 0.408 eval_loss
+[11/27/2023 15:22:23] {train.py:147} INFO - 184 / 1000 | loss/reader_loss: 0.353 | loss/retriever_loss: 0.0552 | loss/train_loss: 0.408 | runtime/backward: 0.574 | runtime/forward: 0.565 | runtime/model_update: 0.171 | runtime/retrieve: 0.0118 | runtime/search: 0.00158 | runtime/train_step: 1.31 | lr: 3.4e-05 | Memory: 17.0 GiB
+[11/27/2023 15:22:28] {train.py:147} INFO - 188 / 1000 | loss/reader_loss: 0.515 | loss/retriever_loss: 0.0369 | loss/train_loss: 0.552 | runtime/backward: 0.573 | runtime/forward: 0.551 | runtime/model_update: 0.171 | runtime/retrieve: 0.0115 | runtime/search: 0.00148 | runtime/train_step: 1.3 | lr: 3.3e-05 | Memory: 17.0 GiB
+[11/27/2023 15:22:34] {train.py:147} INFO - 192 / 1000 | loss/reader_loss: 0.711 | loss/retriever_loss: 0.0862 | loss/train_loss: 0.797 | runtime/backward: 0.576 | runtime/forward: 0.553 | runtime/model_update: 0.172 | runtime/retrieve: 0.0118 | runtime/search: 0.00151 | runtime/train_step: 1.3 | lr: 3.3e-05 | Memory: 17.0 GiB
+[11/27/2023 15:22:39] {train.py:147} INFO - 196 / 1000 | loss/reader_loss: 0.512 | loss/retriever_loss: 0.0813 | loss/train_loss: 0.593 | runtime/backward: 0.576 | runtime/forward: 0.553 | runtime/model_update: 0.171 | runtime/retrieve: 0.0116 | runtime/search: 0.00149 | runtime/train_step: 1.3 | lr: 3.3e-05 | Memory: 17.0 GiB
+[11/27/2023 15:22:44] {train.py:147} INFO - 200 / 1000 | loss/reader_loss: 0.293 | loss/retriever_loss: 0.0448 | loss/train_loss: 0.337 | runtime/backward: 0.576 | runtime/forward: 0.554 | runtime/model_update: 0.171 | runtime/retrieve: 0.0116 | runtime/search: 0.00151 | runtime/train_step: 1.3 | lr: 3.3e-05 | Memory: 17.0 GiB
+[11/27/2023 15:22:49] {train.py:147} INFO - 204 / 1000 | loss/reader_loss: 0.329 | loss/retriever_loss: 0.0564 | loss/train_loss: 0.385 | runtime/backward: 0.576 | runtime/forward: 0.553 | runtime/model_update: 0.171 | runtime/retrieve: 0.0115 | runtime/search: 0.00146 | runtime/train_step: 1.3 | lr: 3.3e-05 | Memory: 17.0 GiB
+[11/27/2023 15:22:54] {train.py:147} INFO - 208 / 1000 | loss/reader_loss: 0.427 | loss/retriever_loss: 0.0459 | loss/train_loss: 0.473 | runtime/backward: 0.577 | runtime/forward: 0.554 | runtime/model_update: 0.171 | runtime/retrieve: 0.0116 | runtime/search: 0.00151 | runtime/train_step: 1.3 | lr: 3.3e-05 | Memory: 17.0 GiB
+[11/27/2023 15:24:20] {util.py:249} INFO - Writing dataset with scores at /home/016029585/atlas/atlas_data/experiments/mcq_case_10/mcq_train_10/eval_data_50-step-210.jsonl
+[11/27/2023 15:24:21] {train.py:160} INFO - Dataset: eval_data_50.jsonl | 88.000 debiased_accuracy | 65.500 accuracy | 0.379 eval_loss
+[11/27/2023 15:24:40] {train.py:147} INFO - 212 / 1000 | loss/reader_loss: 0.0915 | loss/retriever_loss: 0.0403 | loss/train_loss: 0.132 | runtime/backward: 0.576 | runtime/forward: 0.57 | runtime/model_update: 0.168 | runtime/retrieve: 0.012 | runtime/search: 0.00163 | runtime/train_step: 1.31 | lr: 3.3e-05 | Memory: 17.0 GiB
+[11/27/2023 15:24:45] {train.py:147} INFO - 216 / 1000 | loss/reader_loss: 0.95 | loss/retriever_loss: 0.0892 | loss/train_loss: 1.04 | runtime/backward: 0.575 | runtime/forward: 0.552 | runtime/model_update: 0.17 | runtime/retrieve: 0.0117 | runtime/search: 0.00156 | runtime/train_step: 1.3 | lr: 3.2e-05 | Memory: 17.0 GiB
+[11/27/2023 15:24:50] {train.py:147} INFO - 220 / 1000 | loss/reader_loss: 0.484 | loss/retriever_loss: 0.0632 | loss/train_loss: 0.547 | runtime/backward: 0.575 | runtime/forward: 0.556 | runtime/model_update: 0.182 | runtime/retrieve: 0.0121 | runtime/search: 0.00157 | runtime/train_step: 1.31 | lr: 3.2e-05 | Memory: 17.0 GiB
+[11/27/2023 15:24:55] {train.py:147} INFO - 224 / 1000 | loss/reader_loss: 0.0123 | loss/retriever_loss: 0.0376 | loss/train_loss: 0.0499 | runtime/backward: 0.578 | runtime/forward: 0.557 | runtime/model_update: 0.181 | runtime/retrieve: 0.0123 | runtime/search: 0.00166 | runtime/train_step: 1.32 | lr: 3.2e-05 | Memory: 17.0 GiB
+[11/27/2023 15:25:01] {train.py:147} INFO - 228 / 1000 | loss/reader_loss: 0.831 | loss/retriever_loss: 0.0659 | loss/train_loss: 0.897 | runtime/backward: 0.579 | runtime/forward: 0.558 | runtime/model_update: 0.18 | runtime/retrieve: 0.0126 | runtime/search: 0.00181 | runtime/train_step: 1.32 | lr: 3.2e-05 | Memory: 17.0 GiB
+[11/27/2023 15:25:06] {train.py:147} INFO - 232 / 1000 | loss/reader_loss: 0.0835 | loss/retriever_loss: 0.0437 | loss/train_loss: 0.127 | runtime/backward: 0.577 | runtime/forward: 0.557 | runtime/model_update: 0.178 | runtime/retrieve: 0.0123 | runtime/search: 0.00157 | runtime/train_step: 1.31 | lr: 3.2e-05 | Memory: 17.0 GiB
+[11/27/2023 15:25:11] {train.py:147} INFO - 236 / 1000 | loss/reader_loss: 1.24 | loss/retriever_loss: 0.0843 | loss/train_loss: 1.32 | runtime/backward: 0.579 | runtime/forward: 0.559 | runtime/model_update: 0.18 | runtime/retrieve: 0.0127 | runtime/search: 0.00159 | runtime/train_step: 1.32 | lr: 3.2e-05 | Memory: 17.0 GiB
+[11/27/2023 15:25:17] {train.py:147} INFO - 240 / 1000 | loss/reader_loss: 1.21 | loss/retriever_loss: 0.0818 | loss/train_loss: 1.29 | runtime/backward: 0.577 | runtime/forward: 0.557 | runtime/model_update: 0.18 | runtime/retrieve: 0.0123 | runtime/search: 0.00156 | runtime/train_step: 1.31 | lr: 3.1e-05 | Memory: 17.0 GiB
+[11/27/2023 15:26:40] {util.py:249} INFO - Writing dataset with scores at /home/016029585/atlas/atlas_data/experiments/mcq_case_10/mcq_train_10/eval_data_50-step-240.jsonl
+[11/27/2023 15:26:40] {train.py:160} INFO - Dataset: eval_data_50.jsonl | 84.000 debiased_accuracy | 75.500 accuracy | 0.314 eval_loss
+[11/27/2023 15:26:59] {train.py:147} INFO - 244 / 1000 | loss/reader_loss: 1.2 | loss/retriever_loss: 0.0992 | loss/train_loss: 1.3 | runtime/backward: 0.576 | runtime/forward: 0.567 | runtime/model_update: 0.174 | runtime/retrieve: 0.0123 | runtime/search: 0.00173 | runtime/train_step: 1.32 | lr: 3.1e-05 | Memory: 17.0 GiB
+[11/27/2023 15:27:04] {train.py:147} INFO - 248 / 1000 | loss/reader_loss: 0.906 | loss/retriever_loss: 0.0852 | loss/train_loss: 0.992 | runtime/backward: 0.577 | runtime/forward: 0.556 | runtime/model_update: 0.18 | runtime/retrieve: 0.0124 | runtime/search: 0.00164 | runtime/train_step: 1.31 | lr: 3.1e-05 | Memory: 17.0 GiB
+[11/27/2023 15:27:10] {train.py:147} INFO - 252 / 1000 | loss/reader_loss: 0.333 | loss/retriever_loss: 0.0924 | loss/train_loss: 0.425 | runtime/backward: 0.577 | runtime/forward: 0.557 | runtime/model_update: 0.181 | runtime/retrieve: 0.0128 | runtime/search: 0.00158 | runtime/train_step: 1.32 | lr: 3.1e-05 | Memory: 17.0 GiB
+[11/27/2023 15:27:15] {train.py:147} INFO - 256 / 1000 | loss/reader_loss: 0.519 | loss/retriever_loss: 0.0605 | loss/train_loss: 0.58 | runtime/backward: 0.577 | runtime/forward: 0.559 | runtime/model_update: 0.183 | runtime/retrieve: 0.0126 | runtime/search: 0.00166 | runtime/train_step: 1.32 | lr: 3.1e-05 | Memory: 17.0 GiB
+[11/27/2023 15:27:20] {train.py:147} INFO - 260 / 1000 | loss/reader_loss: 0.187 | loss/retriever_loss: 0.0394 | loss/train_loss: 0.226 | runtime/backward: 0.577 | runtime/forward: 0.556 | runtime/model_update: 0.173 | runtime/retrieve: 0.0121 | runtime/search: 0.00158 | runtime/train_step: 1.31 | lr: 3.1e-05 | Memory: 17.0 GiB
+[11/27/2023 15:27:25] {train.py:147} INFO - 264 / 1000 | loss/reader_loss: 0.0485 | loss/retriever_loss: 0.0265 | loss/train_loss: 0.075 | runtime/backward: 0.579 | runtime/forward: 0.557 | runtime/model_update: 0.171 | runtime/retrieve: 0.0119 | runtime/search: 0.0016 | runtime/train_step: 1.31 | lr: 3.1e-05 | Memory: 17.0 GiB
+[11/27/2023 15:27:31] {train.py:147} INFO - 268 / 1000 | loss/reader_loss: 0.319 | loss/retriever_loss: 0.0574 | loss/train_loss: 0.377 | runtime/backward: 0.577 | runtime/forward: 0.556 | runtime/model_update: 0.178 | runtime/retrieve: 0.012 | runtime/search: 0.00157 | runtime/train_step: 1.31 | lr: 3e-05 | Memory: 17.0 GiB
+[11/27/2023 15:28:57] {util.py:249} INFO - Writing dataset with scores at /home/016029585/atlas/atlas_data/experiments/mcq_case_10/mcq_train_10/eval_data_50-step-270.jsonl
+[11/27/2023 15:28:57] {train.py:160} INFO - Dataset: eval_data_50.jsonl | 88.000 debiased_accuracy | 81.500 accuracy | 0.338 eval_loss
+[11/27/2023 15:29:15] {train.py:147} INFO - 272 / 1000 | loss/reader_loss: 0.317 | loss/retriever_loss: 0.0395 | loss/train_loss: 0.356 | runtime/backward: 0.577 | runtime/forward: 0.572 | runtime/model_update: 0.172 | runtime/retrieve: 0.0128 | runtime/search: 0.0018 | runtime/train_step: 1.32 | lr: 3e-05 | Memory: 17.0 GiB
+[11/27/2023 15:29:20] {train.py:147} INFO - 276 / 1000 | loss/reader_loss: 0.272 | loss/retriever_loss: 0.0352 | loss/train_loss: 0.307 | runtime/backward: 0.576 | runtime/forward: 0.555 | runtime/model_update: 0.171 | runtime/retrieve: 0.0118 | runtime/search: 0.00165 | runtime/train_step: 1.3 | lr: 3e-05 | Memory: 17.0 GiB
+[11/27/2023 15:29:25] {train.py:147} INFO - 280 / 1000 | loss/reader_loss: 0.00664 | loss/retriever_loss: 0.0226 | loss/train_loss: 0.0292 | runtime/backward: 0.576 | runtime/forward: 0.556 | runtime/model_update: 0.168 | runtime/retrieve: 0.0119 | runtime/search: 0.00163 | runtime/train_step: 1.3 | lr: 3e-05 | Memory: 17.0 GiB
+[11/27/2023 15:29:30] {train.py:147} INFO - 284 / 1000 | loss/reader_loss: 0.72 | loss/retriever_loss: 0.0401 | loss/train_loss: 0.76 | runtime/backward: 0.577 | runtime/forward: 0.557 | runtime/model_update: 0.17 | runtime/retrieve: 0.0119 | runtime/search: 0.00163 | runtime/train_step: 1.3 | lr: 3e-05 | Memory: 17.0 GiB
+[11/27/2023 15:29:36] {train.py:147} INFO - 288 / 1000 | loss/reader_loss: 1.21 | loss/retriever_loss: 0.132 | loss/train_loss: 1.35 | runtime/backward: 0.576 | runtime/forward: 0.554 | runtime/model_update: 0.171 | runtime/retrieve: 0.0116 | runtime/search: 0.00155 | runtime/train_step: 1.3 | lr: 3e-05 | Memory: 17.0 GiB
+[11/27/2023 15:29:41] {train.py:147} INFO - 292 / 1000 | loss/reader_loss: 0.79 | loss/retriever_loss: 0.0555 | loss/train_loss: 0.845 | runtime/backward: 0.576 | runtime/forward: 0.554 | runtime/model_update: 0.17 | runtime/retrieve: 0.0119 | runtime/search: 0.00155 | runtime/train_step: 1.3 | lr: 3e-05 | Memory: 17.0 GiB
+[11/27/2023 15:29:46] {train.py:147} INFO - 296 / 1000 | loss/reader_loss: 0.000911 | loss/retriever_loss: 0.00852 | loss/train_loss: 0.00943 | runtime/backward: 0.579 | runtime/forward: 0.566 | runtime/model_update: 0.166 | runtime/retrieve: 0.0117 | runtime/search: 0.00158 | runtime/train_step: 1.31 | lr: 2.9e-05 | Memory: 17.0 GiB
+[11/27/2023 15:29:51] {train.py:147} INFO - 300 / 1000 | loss/reader_loss: 0.941 | loss/retriever_loss: 0.0722 | loss/train_loss: 1.01 | runtime/backward: 0.578 | runtime/forward: 0.556 | runtime/model_update: 0.17 | runtime/retrieve: 0.0115 | runtime/search: 0.00153 | runtime/train_step: 1.3 | lr: 2.9e-05 | Memory: 17.0 GiB
+[11/27/2023 15:31:14] {util.py:249} INFO - Writing dataset with scores at /home/016029585/atlas/atlas_data/experiments/mcq_case_10/mcq_train_10/eval_data_50-step-300.jsonl
+[11/27/2023 15:31:14] {train.py:160} INFO - Dataset: eval_data_50.jsonl | 92.000 debiased_accuracy | 88.000 accuracy | 0.233 eval_loss
+[11/27/2023 15:31:33] {train.py:147} INFO - 304 / 1000 | loss/reader_loss: 0.00384 | loss/retriever_loss: 0.044 | loss/train_loss: 0.0478 | runtime/backward: 0.576 | runtime/forward: 0.564 | runtime/model_update: 0.168 | runtime/retrieve: 0.0122 | runtime/search: 0.00171 | runtime/train_step: 1.31 | lr: 2.9e-05 | Memory: 17.0 GiB
+[11/27/2023 15:31:38] {train.py:147} INFO - 308 / 1000 | loss/reader_loss: 0.0521 | loss/retriever_loss: 0.0248 | loss/train_loss: 0.0769 | runtime/backward: 0.577 | runtime/forward: 0.554 | runtime/model_update: 0.169 | runtime/retrieve: 0.0116 | runtime/search: 0.00154 | runtime/train_step: 1.3 | lr: 2.9e-05 | Memory: 17.0 GiB
+[11/27/2023 15:31:43] {train.py:147} INFO - 312 / 1000 | loss/reader_loss: 0.00171 | loss/retriever_loss: 0.0297 | loss/train_loss: 0.0314 | runtime/backward: 0.577 | runtime/forward: 0.553 | runtime/model_update: 0.165 | runtime/retrieve: 0.0116 | runtime/search: 0.00152 | runtime/train_step: 1.3 | lr: 2.9e-05 | Memory: 17.0 GiB
+[11/27/2023 15:31:49] {train.py:147} INFO - 316 / 1000 | loss/reader_loss: 0.00346 | loss/retriever_loss: 0.0366 | loss/train_loss: 0.04 | runtime/backward: 0.577 | runtime/forward: 0.554 | runtime/model_update: 0.165 | runtime/retrieve: 0.0117 | runtime/search: 0.00157 | runtime/train_step: 1.3 | lr: 2.9e-05 | Memory: 17.0 GiB
+[11/27/2023 15:31:54] {train.py:147} INFO - 320 / 1000 | loss/reader_loss: 0.169 | loss/retriever_loss: 0.0701 | loss/train_loss: 0.24 | runtime/backward: 0.575 | runtime/forward: 0.554 | runtime/model_update: 0.171 | runtime/retrieve: 0.0118 | runtime/search: 0.00154 | runtime/train_step: 1.3 | lr: 2.9e-05 | Memory: 17.0 GiB
+[11/27/2023 15:31:59] {train.py:147} INFO - 324 / 1000 | loss/reader_loss: 1.07 | loss/retriever_loss: 0.0666 | loss/train_loss: 1.14 | runtime/backward: 0.577 | runtime/forward: 0.556 | runtime/model_update: 0.175 | runtime/retrieve: 0.0121 | runtime/search: 0.00159 | runtime/train_step: 1.31 | lr: 2.8e-05 | Memory: 17.0 GiB
+[11/27/2023 15:32:04] {train.py:147} INFO - 328 / 1000 | loss/reader_loss: 0.0449 | loss/retriever_loss: 0.0397 | loss/train_loss: 0.0846 | runtime/backward: 0.576 | runtime/forward: 0.554 | runtime/model_update: 0.167 | runtime/retrieve: 0.0117 | runtime/search: 0.00155 | runtime/train_step: 1.3 | lr: 2.8e-05 | Memory: 17.0 GiB
+[11/27/2023 15:33:30] {util.py:249} INFO - Writing dataset with scores at /home/016029585/atlas/atlas_data/experiments/mcq_case_10/mcq_train_10/eval_data_50-step-330.jsonl
+[11/27/2023 15:33:30] {train.py:160} INFO - Dataset: eval_data_50.jsonl | 88.000 debiased_accuracy | 84.500 accuracy | 0.277 eval_loss
+[11/27/2023 15:33:46] {train.py:147} INFO - 332 / 1000 | loss/reader_loss: 0.00023 | loss/retriever_loss: 0.0299 | loss/train_loss: 0.0302 | runtime/backward: 0.574 | runtime/forward: 0.566 | runtime/model_update: 0.166 | runtime/retrieve: 0.012 | runtime/search: 0.00162 | runtime/train_step: 1.31 | lr: 2.8e-05 | Memory: 17.0 GiB
+[11/27/2023 15:33:51] {train.py:147} INFO - 336 / 1000 | loss/reader_loss: 0.87 | loss/retriever_loss: 0.0618 | loss/train_loss: 0.932 | runtime/backward: 0.574 | runtime/forward: 0.552 | runtime/model_update: 0.17 | runtime/retrieve: 0.0117 | runtime/search: 0.00153 | runtime/train_step: 1.3 | lr: 2.8e-05 | Memory: 17.0 GiB
+[11/27/2023 15:33:57] {train.py:147} INFO - 340 / 1000 | loss/reader_loss: 0.00859 | loss/retriever_loss: 0.0555 | loss/train_loss: 0.0641 | runtime/backward: 0.575 | runtime/forward: 0.555 | runtime/model_update: 0.17 | runtime/retrieve: 0.0119 | runtime/search: 0.0016 | runtime/train_step: 1.3 | lr: 2.8e-05 | Memory: 17.0 GiB
+[11/27/2023 15:34:02] {train.py:147} INFO - 344 / 1000 | loss/reader_loss: 0.000139 | loss/retriever_loss: 0.0266 | loss/train_loss: 0.0268 | runtime/backward: 0.576 | runtime/forward: 0.555 | runtime/model_update: 0.166 | runtime/retrieve: 0.0117 | runtime/search: 0.00163 | runtime/train_step: 1.3 | lr: 2.8e-05 | Memory: 17.0 GiB
+[11/27/2023 15:34:07] {train.py:147} INFO - 348 / 1000 | loss/reader_loss: 0.0184 | loss/retriever_loss: 0.0286 | loss/train_loss: 0.047 | runtime/backward: 0.575 | runtime/forward: 0.554 | runtime/model_update: 0.168 | runtime/retrieve: 0.0115 | runtime/search: 0.0015 | runtime/train_step: 1.3 | lr: 2.8e-05 | Memory: 17.0 GiB
+[11/27/2023 15:34:12] {train.py:147} INFO - 352 / 1000 | loss/reader_loss: 0.0279 | loss/retriever_loss: 0.0533 | loss/train_loss: 0.0813 | runtime/backward: 0.575 | runtime/forward: 0.553 | runtime/model_update: 0.17 | runtime/retrieve: 0.0116 | runtime/search: 0.00149 | runtime/train_step: 1.3 | lr: 2.7e-05 | Memory: 17.0 GiB
+[11/27/2023 15:34:17] {train.py:147} INFO - 356 / 1000 | loss/reader_loss: 1.97 | loss/retriever_loss: 0.0443 | loss/train_loss: 2.01 | runtime/backward: 0.577 | runtime/forward: 0.555 | runtime/model_update: 0.171 | runtime/retrieve: 0.0116 | runtime/search: 0.00156 | runtime/train_step: 1.3 | lr: 2.7e-05 | Memory: 17.0 GiB
+[11/27/2023 15:34:23] {train.py:147} INFO - 360 / 1000 | loss/reader_loss: 0.0125 | loss/retriever_loss: 0.019 | loss/train_loss: 0.0315 | runtime/backward: 0.577 | runtime/forward: 0.554 | runtime/model_update: 0.167 | runtime/retrieve: 0.0118 | runtime/search: 0.00155 | runtime/train_step: 1.3 | lr: 2.7e-05 | Memory: 17.0 GiB
+[11/27/2023 15:35:46] {util.py:249} INFO - Writing dataset with scores at /home/016029585/atlas/atlas_data/experiments/mcq_case_10/mcq_train_10/eval_data_50-step-360.jsonl
+[11/27/2023 15:35:46] {train.py:160} INFO - Dataset: eval_data_50.jsonl | 90.000 debiased_accuracy | 89.000 accuracy | 0.165 eval_loss
+[11/27/2023 15:36:09] {train.py:147} INFO - 364 / 1000 | loss/reader_loss: 0.00981 | loss/retriever_loss: 0.0273 | loss/train_loss: 0.0371 | runtime/backward: 0.576 | runtime/forward: 0.572 | runtime/model_update: 0.178 | runtime/retrieve: 0.0134 | runtime/search: 0.00183 | runtime/train_step: 1.33 | lr: 2.7e-05 | Memory: 17.0 GiB
+[11/27/2023 15:36:14] {train.py:147} INFO - 368 / 1000 | loss/reader_loss: 0.118 | loss/retriever_loss: 0.0534 | loss/train_loss: 0.172 | runtime/backward: 0.583 | runtime/forward: 0.561 | runtime/model_update: 0.178 | runtime/retrieve: 0.0121 | runtime/search: 0.00164 | runtime/train_step: 1.32 | lr: 2.7e-05 | Memory: 17.0 GiB
+[11/27/2023 15:36:20] {train.py:147} INFO - 372 / 1000 | loss/reader_loss: 1.1 | loss/retriever_loss: 0.0445 | loss/train_loss: 1.15 | runtime/backward: 0.614 | runtime/forward: 0.601 | runtime/model_update: 0.185 | runtime/retrieve: 0.0121 | runtime/search: 0.00166 | runtime/train_step: 1.4 | lr: 2.7e-05 | Memory: 17.0 GiB
+[11/27/2023 15:36:25] {train.py:147} INFO - 376 / 1000 | loss/reader_loss: 0.389 | loss/retriever_loss: 0.0483 | loss/train_loss: 0.437 | runtime/backward: 0.581 | runtime/forward: 0.556 | runtime/model_update: 0.17 | runtime/retrieve: 0.0121 | runtime/search: 0.00161 | runtime/train_step: 1.31 | lr: 2.7e-05 | Memory: 17.0 GiB
+[11/27/2023 15:36:31] {train.py:147} INFO - 380 / 1000 | loss/reader_loss: 0.634 | loss/retriever_loss: 0.0186 | loss/train_loss: 0.653 | runtime/backward: 0.583 | runtime/forward: 0.554 | runtime/model_update: 0.17 | runtime/retrieve: 0.012 | runtime/search: 0.00159 | runtime/train_step: 1.31 | lr: 2.6e-05 | Memory: 17.0 GiB
+[11/27/2023 15:36:36] {train.py:147} INFO - 384 / 1000 | loss/reader_loss: 0.00807 | loss/retriever_loss: 0.0146 | loss/train_loss: 0.0227 | runtime/backward: 0.587 | runtime/forward: 0.555 | runtime/model_update: 0.178 | runtime/retrieve: 0.0118 | runtime/search: 0.00154 | runtime/train_step: 1.32 | lr: 2.6e-05 | Memory: 17.0 GiB
+[11/27/2023 15:36:42] {train.py:147} INFO - 388 / 1000 | loss/reader_loss: 0.00311 | loss/retriever_loss: 0.0238 | loss/train_loss: 0.0269 | runtime/backward: 0.612 | runtime/forward: 0.629 | runtime/model_update: 0.177 | runtime/retrieve: 0.0122 | runtime/search: 0.0017 | runtime/train_step: 1.42 | lr: 2.6e-05 | Memory: 17.0 GiB
+[11/27/2023 15:38:10] {util.py:249} INFO - Writing dataset with scores at /home/016029585/atlas/atlas_data/experiments/mcq_case_10/mcq_train_10/eval_data_50-step-390.jsonl
+[11/27/2023 15:38:11] {train.py:160} INFO - Dataset: eval_data_50.jsonl | 94.000 debiased_accuracy | 89.500 accuracy | 0.165 eval_loss
+[11/27/2023 15:38:27] {train.py:147} INFO - 392 / 1000 | loss/reader_loss: 0.00107 | loss/retriever_loss: 0.0529 | loss/train_loss: 0.054 | runtime/backward: 0.613 | runtime/forward: 0.579 | runtime/model_update: 0.181 | runtime/retrieve: 0.013 | runtime/search: 0.00183 | runtime/train_step: 1.37 | lr: 2.6e-05 | Memory: 17.0 GiB
+[11/27/2023 15:38:33] {train.py:147} INFO - 396 / 1000 | loss/reader_loss: 0.147 | loss/retriever_loss: 0.0187 | loss/train_loss: 0.166 | runtime/backward: 0.616 | runtime/forward: 0.598 | runtime/model_update: 0.181 | runtime/retrieve: 0.0122 | runtime/search: 0.0016 | runtime/train_step: 1.4 | lr: 2.6e-05 | Memory: 17.0 GiB
+[11/27/2023 15:38:38] {train.py:147} INFO - 400 / 1000 | loss/reader_loss: 0.116 | loss/retriever_loss: 0.0368 | loss/train_loss: 0.152 | runtime/backward: 0.582 | runtime/forward: 0.555 | runtime/model_update: 0.169 | runtime/retrieve: 0.0123 | runtime/search: 0.00164 | runtime/train_step: 1.31 | lr: 2.6e-05 | Memory: 17.0 GiB
+[11/27/2023 15:38:43] {train.py:147} INFO - 404 / 1000 | loss/reader_loss: 0.0079 | loss/retriever_loss: 0.0247 | loss/train_loss: 0.0326 | runtime/backward: 0.581 | runtime/forward: 0.553 | runtime/model_update: 0.169 | runtime/retrieve: 0.0118 | runtime/search: 0.00154 | runtime/train_step: 1.3 | lr: 2.6e-05 | Memory: 17.0 GiB
+[11/27/2023 15:38:49] {train.py:147} INFO - 408 / 1000 | loss/reader_loss: 0.000737 | loss/retriever_loss: 0.043 | loss/train_loss: 0.0437 | runtime/backward: 0.584 | runtime/forward: 0.556 | runtime/model_update: 0.168 | runtime/retrieve: 0.0119 | runtime/search: 0.00157 | runtime/train_step: 1.31 | lr: 2.5e-05 | Memory: 17.0 GiB
+[11/27/2023 15:38:54] {train.py:147} INFO - 412 / 1000 | loss/reader_loss: 0.137 | loss/retriever_loss: 0.0381 | loss/train_loss: 0.175 | runtime/backward: 0.582 | runtime/forward: 0.638 | runtime/model_update: 0.174 | runtime/retrieve: 0.0124 | runtime/search: 0.00161 | runtime/train_step: 1.39 | lr: 2.5e-05 | Memory: 17.0 GiB
+[11/27/2023 15:39:00] {train.py:147} INFO - 416 / 1000 | loss/reader_loss: 0.18 | loss/retriever_loss: 0.0473 | loss/train_loss: 0.227 | runtime/backward: 0.623 | runtime/forward: 0.59 | runtime/model_update: 0.19 | runtime/retrieve: 0.0124 | runtime/search: 0.00185 | runtime/train_step: 1.4 | lr: 2.5e-05 | Memory: 17.0 GiB
+[11/27/2023 15:39:05] {train.py:147} INFO - 420 / 1000 | loss/reader_loss: 0.607 | loss/retriever_loss: 0.0604 | loss/train_loss: 0.667 | runtime/backward: 0.59 | runtime/forward: 0.568 | runtime/model_update: 0.168 | runtime/retrieve: 0.012 | runtime/search: 0.00162 | runtime/train_step: 1.33 | lr: 2.5e-05 | Memory: 17.0 GiB
+[11/27/2023 15:40:30] {util.py:249} INFO - Writing dataset with scores at /home/016029585/atlas/atlas_data/experiments/mcq_case_10/mcq_train_10/eval_data_50-step-420.jsonl
+[11/27/2023 15:40:31] {train.py:160} INFO - Dataset: eval_data_50.jsonl | 92.000 debiased_accuracy | 91.000 accuracy | 0.177 eval_loss
+[11/27/2023 15:40:53] {train.py:147} INFO - 424 / 1000 | loss/reader_loss: 0.000805 | loss/retriever_loss: 0.0179 | loss/train_loss: 0.0187 | runtime/backward: 0.573 | runtime/forward: 0.566 | runtime/model_update: 0.166 | runtime/retrieve: 0.0119 | runtime/search: 0.00158 | runtime/train_step: 1.31 | lr: 2.5e-05 | Memory: 17.0 GiB
+[11/27/2023 15:40:59] {train.py:147} INFO - 428 / 1000 | loss/reader_loss: 0.00122 | loss/retriever_loss: 0.0457 | loss/train_loss: 0.0469 | runtime/backward: 0.575 | runtime/forward: 0.557 | runtime/model_update: 0.169 | runtime/retrieve: 0.0117 | runtime/search: 0.00158 | runtime/train_step: 1.3 | lr: 2.5e-05 | Memory: 17.0 GiB
+[11/27/2023 15:41:04] {train.py:147} INFO - 432 / 1000 | loss/reader_loss: 0.16 | loss/retriever_loss: 0.0458 | loss/train_loss: 0.206 | runtime/backward: 0.574 | runtime/forward: 0.555 | runtime/model_update: 0.169 | runtime/retrieve: 0.0126 | runtime/search: 0.00153 | runtime/train_step: 1.3 | lr: 2.5e-05 | Memory: 17.0 GiB
+[11/27/2023 15:41:09] {train.py:147} INFO - 436 / 1000 | loss/reader_loss: 1.33 | loss/retriever_loss: 0.0408 | loss/train_loss: 1.37 | runtime/backward: 0.575 | runtime/forward: 0.553 | runtime/model_update: 0.17 | runtime/retrieve: 0.0116 | runtime/search: 0.0015 | runtime/train_step: 1.3 | lr: 2.4e-05 | Memory: 17.0 GiB
+[11/27/2023 15:41:14] {train.py:147} INFO - 440 / 1000 | loss/reader_loss: 0.0574 | loss/retriever_loss: 0.0544 | loss/train_loss: 0.112 | runtime/backward: 0.575 | runtime/forward: 0.557 | runtime/model_update: 0.17 | runtime/retrieve: 0.0119 | runtime/search: 0.00155 | runtime/train_step: 1.3 | lr: 2.4e-05 | Memory: 17.0 GiB
+[11/27/2023 15:41:19] {train.py:147} INFO - 444 / 1000 | loss/reader_loss: 0.0141 | loss/retriever_loss: 0.0175 | loss/train_loss: 0.0316 | runtime/backward: 0.577 | runtime/forward: 0.557 | runtime/model_update: 0.169 | runtime/retrieve: 0.0119 | runtime/search: 0.00162 | runtime/train_step: 1.3 | lr: 2.4e-05 | Memory: 17.0 GiB
+[11/27/2023 15:41:25] {train.py:147} INFO - 448 / 1000 | loss/reader_loss: 0.0743 | loss/retriever_loss: 0.029 | loss/train_loss: 0.103 | runtime/backward: 0.577 | runtime/forward: 0.558 | runtime/model_update: 0.17 | runtime/retrieve: 0.0119 | runtime/search: 0.00155 | runtime/train_step: 1.31 | lr: 2.4e-05 | Memory: 17.0 GiB
+[11/27/2023 15:42:53] {util.py:249} INFO - Writing dataset with scores at /home/016029585/atlas/atlas_data/experiments/mcq_case_10/mcq_train_10/eval_data_50-step-450.jsonl
+[11/27/2023 15:42:53] {train.py:160} INFO - Dataset: eval_data_50.jsonl | 92.000 debiased_accuracy | 91.500 accuracy | 0.144 eval_loss
+[11/27/2023 15:43:13] {train.py:147} INFO - 452 / 1000 | loss/reader_loss: 0.0021 | loss/retriever_loss: 0.0388 | loss/train_loss: 0.0409 | runtime/backward: 0.574 | runtime/forward: 0.565 | runtime/model_update: 0.167 | runtime/retrieve: 0.0122 | runtime/search: 0.00165 | runtime/train_step: 1.31 | lr: 2.4e-05 | Memory: 17.0 GiB
+[11/27/2023 15:43:18] {train.py:147} INFO - 456 / 1000 | loss/reader_loss: 0.667 | loss/retriever_loss: 0.0221 | loss/train_loss: 0.69 | runtime/backward: 0.573 | runtime/forward: 0.552 | runtime/model_update: 0.168 | runtime/retrieve: 0.0115 | runtime/search: 0.00148 | runtime/train_step: 1.29 | lr: 2.4e-05 | Memory: 17.0 GiB
+[11/27/2023 15:43:23] {train.py:147} INFO - 460 / 1000 | loss/reader_loss: 0.489 | loss/retriever_loss: 0.0467 | loss/train_loss: 0.536 | runtime/backward: 0.577 | runtime/forward: 0.554 | runtime/model_update: 0.168 | runtime/retrieve: 0.0117 | runtime/search: 0.00151 | runtime/train_step: 1.3 | lr: 2.4e-05 | Memory: 17.0 GiB
+[11/27/2023 15:43:29] {train.py:147} INFO - 464 / 1000 | loss/reader_loss: 0.485 | loss/retriever_loss: 0.0244 | loss/train_loss: 0.509 | runtime/backward: 0.662 | runtime/forward: 0.573 | runtime/model_update: 0.183 | runtime/retrieve: 0.0131 | runtime/search: 0.00209 | runtime/train_step: 1.42 | lr: 2.3e-05 | Memory: 17.0 GiB
+[11/27/2023 15:43:35] {train.py:147} INFO - 468 / 1000 | loss/reader_loss: 0.288 | loss/retriever_loss: 0.021 | loss/train_loss: 0.309 | runtime/backward: 0.641 | runtime/forward: 0.631 | runtime/model_update: 0.193 | runtime/retrieve: 0.013 | runtime/search: 0.00234 | runtime/train_step: 1.46 | lr: 2.3e-05 | Memory: 17.0 GiB
+[11/27/2023 15:43:40] {train.py:147} INFO - 472 / 1000 | loss/reader_loss: 0.584 | loss/retriever_loss: 0.039 | loss/train_loss: 0.622 | runtime/backward: 0.602 | runtime/forward: 0.589 | runtime/model_update: 0.182 | runtime/retrieve: 0.0127 | runtime/search: 0.00175 | runtime/train_step: 1.37 | lr: 2.3e-05 | Memory: 17.0 GiB
+[11/27/2023 15:43:45] {train.py:147} INFO - 476 / 1000 | loss/reader_loss: 0.0885 | loss/retriever_loss: 0.0242 | loss/train_loss: 0.113 | runtime/backward: 0.584 | runtime/forward: 0.557 | runtime/model_update: 0.175 | runtime/retrieve: 0.0122 | runtime/search: 0.00155 | runtime/train_step: 1.32 | lr: 2.3e-05 | Memory: 17.0 GiB
+[11/27/2023 15:43:54] {train.py:147} INFO - 480 / 1000 | loss/reader_loss: 0.212 | loss/retriever_loss: 0.0282 | loss/train_loss: 0.24 | runtime/backward: 0.799 | runtime/forward: 0.725 | runtime/model_update: 0.749 | runtime/retrieve: 0.0137 | runtime/search: 0.00324 | runtime/train_step: 2.27 | lr: 2.3e-05 | Memory: 17.0 GiB
+[11/27/2023 15:45:35] {util.py:249} INFO - Writing dataset with scores at /home/016029585/atlas/atlas_data/experiments/mcq_case_10/mcq_train_10/eval_data_50-step-480.jsonl
+[11/27/2023 15:45:36] {train.py:160} INFO - Dataset: eval_data_50.jsonl | 92.000 debiased_accuracy | 89.000 accuracy | 0.149 eval_loss
+[11/27/2023 15:45:58] {train.py:147} INFO - 484 / 1000 | loss/reader_loss: 0.196 | loss/retriever_loss: 0.0365 | loss/train_loss: 0.232 | runtime/backward: 0.583 | runtime/forward: 0.596 | runtime/model_update: 0.176 | runtime/retrieve: 0.0124 | runtime/search: 0.00162 | runtime/train_step: 1.36 | lr: 2.3e-05 | Memory: 17.0 GiB
+[11/27/2023 15:46:04] {train.py:147} INFO - 488 / 1000 | loss/reader_loss: 0.000846 | loss/retriever_loss: 0.0343 | loss/train_loss: 0.0351 | runtime/backward: 0.62 | runtime/forward: 0.603 | runtime/model_update: 0.181 | runtime/retrieve: 0.0123 | runtime/search: 0.00186 | runtime/train_step: 1.4 | lr: 2.3e-05 | Memory: 17.0 GiB
+[11/27/2023 15:46:09] {train.py:147} INFO - 492 / 1000 | loss/reader_loss: 1.1 | loss/retriever_loss: 0.0606 | loss/train_loss: 1.16 | runtime/backward: 0.577 | runtime/forward: 0.556 | runtime/model_update: 0.17 | runtime/retrieve: 0.012 | runtime/search: 0.00161 | runtime/train_step: 1.3 | lr: 2.2e-05 | Memory: 17.0 GiB
+[11/27/2023 15:46:14] {train.py:147} INFO - 496 / 1000 | loss/reader_loss: 0.623 | loss/retriever_loss: 0.0553 | loss/train_loss: 0.678 | runtime/backward: 0.577 | runtime/forward: 0.554 | runtime/model_update: 0.169 | runtime/retrieve: 0.0117 | runtime/search: 0.00154 | runtime/train_step: 1.3 | lr: 2.2e-05 | Memory: 17.0 GiB
+[11/27/2023 15:46:19] {train.py:147} INFO - 500 / 1000 | loss/reader_loss: 0.428 | loss/retriever_loss: 0.038 | loss/train_loss: 0.466 | runtime/backward: 0.581 | runtime/forward: 0.556 | runtime/model_update: 0.178 | runtime/retrieve: 0.0118 | runtime/search: 0.00153 | runtime/train_step: 1.32 | lr: 2.2e-05 | Memory: 17.0 GiB
+[11/27/2023 15:46:25] {train.py:147} INFO - 504 / 1000 | loss/reader_loss: 0.11 | loss/retriever_loss: 0.00566 | loss/train_loss: 0.116 | runtime/backward: 0.644 | runtime/forward: 0.573 | runtime/model_update: 0.168 | runtime/retrieve: 0.0122 | runtime/search: 0.00165 | runtime/train_step: 1.39 | lr: 2.2e-05 | Memory: 17.0 GiB
+[11/27/2023 15:46:31] {train.py:147} INFO - 508 / 1000 | loss/reader_loss: 0.419 | loss/retriever_loss: 0.0202 | loss/train_loss: 0.439 | runtime/backward: 0.623 | runtime/forward: 0.602 | runtime/model_update: 0.189 | runtime/retrieve: 0.0124 | runtime/search: 0.00203 | runtime/train_step: 1.41 | lr: 2.2e-05 | Memory: 17.0 GiB
+[11/27/2023 15:47:59] {util.py:249} INFO - Writing dataset with scores at /home/016029585/atlas/atlas_data/experiments/mcq_case_10/mcq_train_10/eval_data_50-step-510.jsonl
+[11/27/2023 15:47:59] {train.py:160} INFO - Dataset: eval_data_50.jsonl | 92.000 debiased_accuracy | 89.500 accuracy | 0.135 eval_loss
+[11/27/2023 15:48:17] {train.py:147} INFO - 512 / 1000 | loss/reader_loss: 0.555 | loss/retriever_loss: 0.0507 | loss/train_loss: 0.605 | runtime/backward: 0.578 | runtime/forward: 0.579 | runtime/model_update: 0.17 | runtime/retrieve: 0.0125 | runtime/search: 0.00176 | runtime/train_step: 1.33 | lr: 2.2e-05 | Memory: 17.0 GiB
+[11/27/2023 15:48:23] {train.py:147} INFO - 516 / 1000 | loss/reader_loss: 0.113 | loss/retriever_loss: 0.0439 | loss/train_loss: 0.157 | runtime/backward: 0.582 | runtime/forward: 0.604 | runtime/model_update: 0.194 | runtime/retrieve: 0.0207 | runtime/search: 0.0101 | runtime/train_step: 1.38 | lr: 2.2e-05 | Memory: 17.0 GiB
+[11/27/2023 15:48:28] {train.py:147} INFO - 520 / 1000 | loss/reader_loss: 0.00777 | loss/retriever_loss: 0.0344 | loss/train_loss: 0.0422 | runtime/backward: 0.607 | runtime/forward: 0.597 | runtime/model_update: 0.181 | runtime/retrieve: 0.0122 | runtime/search: 0.0018 | runtime/train_step: 1.39 | lr: 2.1e-05 | Memory: 17.0 GiB
+[11/27/2023 15:48:33] {train.py:147} INFO - 524 / 1000 | loss/reader_loss: 0.0154 | loss/retriever_loss: 0.0255 | loss/train_loss: 0.0409 | runtime/backward: 0.59 | runtime/forward: 0.577 | runtime/model_update: 0.174 | runtime/retrieve: 0.012 | runtime/search: 0.00165 | runtime/train_step: 1.34 | lr: 2.1e-05 | Memory: 17.0 GiB
+[11/27/2023 15:48:39] {train.py:147} INFO - 528 / 1000 | loss/reader_loss: 0.000235 | loss/retriever_loss: 0.0298 | loss/train_loss: 0.0301 | runtime/backward: 0.577 | runtime/forward: 0.556 | runtime/model_update: 0.167 | runtime/retrieve: 0.0118 | runtime/search: 0.00152 | runtime/train_step: 1.3 | lr: 2.1e-05 | Memory: 17.0 GiB
+[11/27/2023 15:48:44] {train.py:147} INFO - 532 / 1000 | loss/reader_loss: 0.00103 | loss/retriever_loss: 0.0199 | loss/train_loss: 0.0209 | runtime/backward: 0.578 | runtime/forward: 0.557 | runtime/model_update: 0.17 | runtime/retrieve: 0.0121 | runtime/search: 0.00163 | runtime/train_step: 1.3 | lr: 2.1e-05 | Memory: 17.0 GiB
+[11/27/2023 15:48:50] {train.py:147} INFO - 536 / 1000 | loss/reader_loss: 0.754 | loss/retriever_loss: 0.045 | loss/train_loss: 0.799 | runtime/backward: 0.649 | runtime/forward: 0.597 | runtime/model_update: 0.201 | runtime/retrieve: 0.0124 | runtime/search: 0.0017 | runtime/train_step: 1.45 | lr: 2.1e-05 | Memory: 17.0 GiB
+[11/27/2023 15:48:55] {train.py:147} INFO - 540 / 1000 | loss/reader_loss: 0.00141 | loss/retriever_loss: 0.00658 | loss/train_loss: 0.00799 | runtime/backward: 0.635 | runtime/forward: 0.623 | runtime/model_update: 0.184 | runtime/retrieve: 0.0139 | runtime/search: 0.00319 | runtime/train_step: 1.44 | lr: 2.1e-05 | Memory: 17.0 GiB
+[11/27/2023 15:50:25] {util.py:249} INFO - Writing dataset with scores at /home/016029585/atlas/atlas_data/experiments/mcq_case_10/mcq_train_10/eval_data_50-step-540.jsonl
+[11/27/2023 15:50:25] {train.py:160} INFO - Dataset: eval_data_50.jsonl | 92.000 debiased_accuracy | 91.000 accuracy | 0.159 eval_loss
+[11/27/2023 15:50:54] {train.py:147} INFO - 544 / 1000 | loss/reader_loss: 0.196 | loss/retriever_loss: 0.0214 | loss/train_loss: 0.217 | runtime/backward: 0.915 | runtime/forward: 1.03 | runtime/model_update: 1.41 | runtime/retrieve: 0.0267 | runtime/search: 0.0161 | runtime/train_step: 3.36 | lr: 2e-05 | Memory: 17.0 GiB
+[11/27/2023 15:51:07] {train.py:147} INFO - 548 / 1000 | loss/reader_loss: 0.00559 | loss/retriever_loss: 0.032 | loss/train_loss: 0.0376 | runtime/backward: 0.946 | runtime/forward: 1.01 | runtime/model_update: 1.28 | runtime/retrieve: 0.0242 | runtime/search: 0.0132 | runtime/train_step: 3.23 | lr: 2e-05 | Memory: 17.0 GiB
+[11/27/2023 15:51:21] {train.py:147} INFO - 552 / 1000 | loss/reader_loss: 0.0035 | loss/retriever_loss: 0.0217 | loss/train_loss: 0.0252 | runtime/backward: 0.904 | runtime/forward: 1.03 | runtime/model_update: 1.48 | runtime/retrieve: 0.0213 | runtime/search: 0.0109 | runtime/train_step: 3.42 | lr: 2e-05 | Memory: 17.0 GiB
+[11/27/2023 15:51:34] {train.py:147} INFO - 556 / 1000 | loss/reader_loss: 0.775 | loss/retriever_loss: 0.0597 | loss/train_loss: 0.834 | runtime/backward: 0.916 | runtime/forward: 0.981 | runtime/model_update: 1.33 | runtime/retrieve: 0.0187 | runtime/search: 0.00824 | runtime/train_step: 3.23 | lr: 2e-05 | Memory: 17.0 GiB
+[11/27/2023 15:51:39] {train.py:147} INFO - 560 / 1000 | loss/reader_loss: 0.73 | loss/retriever_loss: 0.0401 | loss/train_loss: 0.77 | runtime/backward: 0.598 | runtime/forward: 0.58 | runtime/model_update: 0.172 | runtime/retrieve: 0.0121 | runtime/search: 0.00172 | runtime/train_step: 1.35 | lr: 2e-05 | Memory: 17.0 GiB
+[11/27/2023 15:51:46] {train.py:147} INFO - 564 / 1000 | loss/reader_loss: 0.279 | loss/retriever_loss: 0.0156 | loss/train_loss: 0.294 | runtime/backward: 0.777 | runtime/forward: 0.584 | runtime/model_update: 0.255 | runtime/retrieve: 0.0121 | runtime/search: 0.00173 | runtime/train_step: 1.62 | lr: 2e-05 | Memory: 17.0 GiB
+[11/27/2023 15:51:55] {train.py:147} INFO - 568 / 1000 | loss/reader_loss: 0.208 | loss/retriever_loss: 0.0183 | loss/train_loss: 0.226 | runtime/backward: 0.707 | runtime/forward: 0.713 | runtime/model_update: 0.824 | runtime/retrieve: 0.0143 | runtime/search: 0.00402 | runtime/train_step: 2.24 | lr: 2e-05 | Memory: 17.0 GiB
+[11/27/2023 15:53:32] {util.py:249} INFO - Writing dataset with scores at /home/016029585/atlas/atlas_data/experiments/mcq_case_10/mcq_train_10/eval_data_50-step-570.jsonl
+[11/27/2023 15:53:33] {train.py:160} INFO - Dataset: eval_data_50.jsonl | 94.000 debiased_accuracy | 91.500 accuracy | 0.128 eval_loss
+[11/27/2023 15:53:47] {train.py:147} INFO - 572 / 1000 | loss/reader_loss: 0.129 | loss/retriever_loss: 0.0298 | loss/train_loss: 0.159 | runtime/backward: 0.695 | runtime/forward: 0.623 | runtime/model_update: 0.537 | runtime/retrieve: 0.0137 | runtime/search: 0.0033 | runtime/train_step: 1.86 | lr: 1.9e-05 | Memory: 17.0 GiB
+[11/27/2023 15:53:53] {train.py:147} INFO - 576 / 1000 | loss/reader_loss: 0.00174 | loss/retriever_loss: 0.0186 | loss/train_loss: 0.0204 | runtime/backward: 0.579 | runtime/forward: 0.551 | runtime/model_update: 0.166 | runtime/retrieve: 0.0116 | runtime/search: 0.00146 | runtime/train_step: 1.3 | lr: 1.9e-05 | Memory: 17.0 GiB
+[11/27/2023 15:53:58] {train.py:147} INFO - 580 / 1000 | loss/reader_loss: 0.37 | loss/retriever_loss: 0.0243 | loss/train_loss: 0.394 | runtime/backward: 0.577 | runtime/forward: 0.553 | runtime/model_update: 0.167 | runtime/retrieve: 0.0116 | runtime/search: 0.00151 | runtime/train_step: 1.3 | lr: 1.9e-05 | Memory: 17.0 GiB
+[11/27/2023 15:54:03] {train.py:147} INFO - 584 / 1000 | loss/reader_loss: 0.000624 | loss/retriever_loss: 0.0166 | loss/train_loss: 0.0172 | runtime/backward: 0.581 | runtime/forward: 0.554 | runtime/model_update: 0.166 | runtime/retrieve: 0.012 | runtime/search: 0.0019 | runtime/train_step: 1.3 | lr: 1.9e-05 | Memory: 17.0 GiB
+[11/27/2023 15:54:08] {train.py:147} INFO - 588 / 1000 | loss/reader_loss: 0.00876 | loss/retriever_loss: 0.0126 | loss/train_loss: 0.0214 | runtime/backward: 0.578 | runtime/forward: 0.554 | runtime/model_update: 0.167 | runtime/retrieve: 0.0116 | runtime/search: 0.00148 | runtime/train_step: 1.3 | lr: 1.9e-05 | Memory: 17.0 GiB
+[11/27/2023 15:54:14] {train.py:147} INFO - 592 / 1000 | loss/reader_loss: 0.0277 | loss/retriever_loss: 0.027 | loss/train_loss: 0.0547 | runtime/backward: 0.579 | runtime/forward: 0.557 | runtime/model_update: 0.175 | runtime/retrieve: 0.0121 | runtime/search: 0.0016 | runtime/train_step: 1.31 | lr: 1.9e-05 | Memory: 17.0 GiB
+[11/27/2023 15:54:19] {train.py:147} INFO - 596 / 1000 | loss/reader_loss: 0.00353 | loss/retriever_loss: 0.0417 | loss/train_loss: 0.0452 | runtime/backward: 0.579 | runtime/forward: 0.557 | runtime/model_update: 0.177 | runtime/retrieve: 0.0123 | runtime/search: 0.00157 | runtime/train_step: 1.31 | lr: 1.9e-05 | Memory: 17.0 GiB
+[11/27/2023 15:54:24] {train.py:147} INFO - 600 / 1000 | loss/reader_loss: 0.00183 | loss/retriever_loss: 0.0239 | loss/train_loss: 0.0257 | runtime/backward: 0.58 | runtime/forward: 0.556 | runtime/model_update: 0.176 | runtime/retrieve: 0.0123 | runtime/search: 0.00152 | runtime/train_step: 1.31 | lr: 1.8e-05 | Memory: 17.0 GiB
+[11/27/2023 15:55:47] {util.py:249} INFO - Writing dataset with scores at /home/016029585/atlas/atlas_data/experiments/mcq_case_10/mcq_train_10/eval_data_50-step-600.jsonl
+[11/27/2023 15:55:47] {train.py:160} INFO - Dataset: eval_data_50.jsonl | 94.000 debiased_accuracy | 91.500 accuracy | 0.186 eval_loss
+[11/27/2023 15:56:04] {train.py:147} INFO - 604 / 1000 | loss/reader_loss: 0.423 | loss/retriever_loss: 0.0458 | loss/train_loss: 0.469 | runtime/backward: 0.577 | runtime/forward: 0.564 | runtime/model_update: 0.167 | runtime/retrieve: 0.0121 | runtime/search: 0.00164 | runtime/train_step: 1.31 | lr: 1.8e-05 | Memory: 17.0 GiB
+[11/27/2023 15:56:09] {train.py:147} INFO - 608 / 1000 | loss/reader_loss: 0.000593 | loss/retriever_loss: 0.0171 | loss/train_loss: 0.0177 | runtime/backward: 0.577 | runtime/forward: 0.552 | runtime/model_update: 0.166 | runtime/retrieve: 0.0116 | runtime/search: 0.0015 | runtime/train_step: 1.3 | lr: 1.8e-05 | Memory: 17.0 GiB
+[11/27/2023 15:56:15] {train.py:147} INFO - 612 / 1000 | loss/reader_loss: 0.00343 | loss/retriever_loss: 0.0091 | loss/train_loss: 0.0125 | runtime/backward: 0.576 | runtime/forward: 0.553 | runtime/model_update: 0.166 | runtime/retrieve: 0.0117 | runtime/search: 0.00147 | runtime/train_step: 1.3 | lr: 1.8e-05 | Memory: 17.0 GiB
+[11/27/2023 15:56:20] {train.py:147} INFO - 616 / 1000 | loss/reader_loss: 0.00402 | loss/retriever_loss: 0.0309 | loss/train_loss: 0.0349 | runtime/backward: 0.619 | runtime/forward: 0.591 | runtime/model_update: 0.185 | runtime/retrieve: 0.0124 | runtime/search: 0.00201 | runtime/train_step: 1.4 | lr: 1.8e-05 | Memory: 17.0 GiB
+[11/27/2023 15:56:26] {train.py:147} INFO - 620 / 1000 | loss/reader_loss: 0.161 | loss/retriever_loss: 0.0106 | loss/train_loss: 0.172 | runtime/backward: 0.589 | runtime/forward: 0.568 | runtime/model_update: 0.169 | runtime/retrieve: 0.0119 | runtime/search: 0.00159 | runtime/train_step: 1.33 | lr: 1.8e-05 | Memory: 17.0 GiB
+[11/27/2023 15:56:33] {train.py:147} INFO - 624 / 1000 | loss/reader_loss: 0.067 | loss/retriever_loss: 0.0359 | loss/train_loss: 0.103 | runtime/backward: 0.796 | runtime/forward: 0.626 | runtime/model_update: 0.392 | runtime/retrieve: 0.0124 | runtime/search: 0.00175 | runtime/train_step: 1.82 | lr: 1.8e-05 | Memory: 17.0 GiB
+[11/27/2023 15:56:42] {train.py:147} INFO - 628 / 1000 | loss/reader_loss: 0.227 | loss/retriever_loss: 0.0241 | loss/train_loss: 0.251 | runtime/backward: 0.69 | runtime/forward: 0.779 | runtime/model_update: 0.888 | runtime/retrieve: 0.0187 | runtime/search: 0.00845 | runtime/train_step: 2.36 | lr: 1.7e-05 | Memory: 17.0 GiB
+[11/27/2023 15:58:25] {util.py:249} INFO - Writing dataset with scores at /home/016029585/atlas/atlas_data/experiments/mcq_case_10/mcq_train_10/eval_data_50-step-630.jsonl
+[11/27/2023 15:58:26] {train.py:160} INFO - Dataset: eval_data_50.jsonl | 94.000 debiased_accuracy | 92.500 accuracy | 0.184 eval_loss
+[11/27/2023 15:58:42] {train.py:147} INFO - 632 / 1000 | loss/reader_loss: 0.442 | loss/retriever_loss: 0.0245 | loss/train_loss: 0.466 | runtime/backward: 0.691 | runtime/forward: 0.639 | runtime/model_update: 0.522 | runtime/retrieve: 0.0136 | runtime/search: 0.00327 | runtime/train_step: 1.85 | lr: 1.7e-05 | Memory: 17.0 GiB
+[11/27/2023 15:58:47] {train.py:147} INFO - 636 / 1000 | loss/reader_loss: 0.00542 | loss/retriever_loss: 0.0211 | loss/train_loss: 0.0265 | runtime/backward: 0.575 | runtime/forward: 0.554 | runtime/model_update: 0.167 | runtime/retrieve: 0.0118 | runtime/search: 0.00154 | runtime/train_step: 1.3 | lr: 1.7e-05 | Memory: 17.0 GiB
+[11/27/2023 15:58:52] {train.py:147} INFO - 640 / 1000 | loss/reader_loss: 0.0882 | loss/retriever_loss: 0.0412 | loss/train_loss: 0.129 | runtime/backward: 0.575 | runtime/forward: 0.557 | runtime/model_update: 0.167 | runtime/retrieve: 0.0118 | runtime/search: 0.00156 | runtime/train_step: 1.3 | lr: 1.7e-05 | Memory: 17.0 GiB
+[11/27/2023 15:58:57] {train.py:147} INFO - 644 / 1000 | loss/reader_loss: 5.83e-05 | loss/retriever_loss: 0.0118 | loss/train_loss: 0.0118 | runtime/backward: 0.575 | runtime/forward: 0.554 | runtime/model_update: 0.166 | runtime/retrieve: 0.0122 | runtime/search: 0.00157 | runtime/train_step: 1.3 | lr: 1.7e-05 | Memory: 17.0 GiB
+[11/27/2023 15:59:02] {train.py:147} INFO - 648 / 1000 | loss/reader_loss: 0.000204 | loss/retriever_loss: 0.00486 | loss/train_loss: 0.00506 | runtime/backward: 0.574 | runtime/forward: 0.553 | runtime/model_update: 0.165 | runtime/retrieve: 0.0118 | runtime/search: 0.0015 | runtime/train_step: 1.29 | lr: 1.7e-05 | Memory: 17.0 GiB
+[11/27/2023 15:59:08] {train.py:147} INFO - 652 / 1000 | loss/reader_loss: 0.000117 | loss/retriever_loss: 0.0216 | loss/train_loss: 0.0217 | runtime/backward: 0.575 | runtime/forward: 0.553 | runtime/model_update: 0.165 | runtime/retrieve: 0.0116 | runtime/search: 0.00147 | runtime/train_step: 1.29 | lr: 1.7e-05 | Memory: 17.0 GiB
+[11/27/2023 15:59:13] {train.py:147} INFO - 656 / 1000 | loss/reader_loss: 0.000202 | loss/retriever_loss: 0.0245 | loss/train_loss: 0.0247 | runtime/backward: 0.575 | runtime/forward: 0.553 | runtime/model_update: 0.166 | runtime/retrieve: 0.0116 | runtime/search: 0.00144 | runtime/train_step: 1.29 | lr: 1.6e-05 | Memory: 17.0 GiB
+[11/27/2023 15:59:18] {train.py:147} INFO - 660 / 1000 | loss/reader_loss: 0.000101 | loss/retriever_loss: 0.0188 | loss/train_loss: 0.0189 | runtime/backward: 0.577 | runtime/forward: 0.556 | runtime/model_update: 0.166 | runtime/retrieve: 0.0117 | runtime/search: 0.00158 | runtime/train_step: 1.3 | lr: 1.6e-05 | Memory: 17.0 GiB
+[11/27/2023 16:00:53] {util.py:249} INFO - Writing dataset with scores at /home/016029585/atlas/atlas_data/experiments/mcq_case_10/mcq_train_10/eval_data_50-step-660.jsonl
+[11/27/2023 16:00:53] {train.py:160} INFO - Dataset: eval_data_50.jsonl | 94.000 debiased_accuracy | 92.000 accuracy | 0.174 eval_loss
+[11/27/2023 16:01:17] {train.py:147} INFO - 664 / 1000 | loss/reader_loss: 4.23e-05 | loss/retriever_loss: 0.00831 | loss/train_loss: 0.00835 | runtime/backward: 0.686 | runtime/forward: 0.733 | runtime/model_update: 0.924 | runtime/retrieve: 0.0166 | runtime/search: 0.00624 | runtime/train_step: 2.34 | lr: 1.6e-05 | Memory: 17.0 GiB
+[11/27/2023 16:01:24] {train.py:147} INFO - 668 / 1000 | loss/reader_loss: 0.000107 | loss/retriever_loss: 0.0332 | loss/train_loss: 0.0333 | runtime/backward: 0.651 | runtime/forward: 0.665 | runtime/model_update: 0.555 | runtime/retrieve: 0.0165 | runtime/search: 0.00626 | runtime/train_step: 1.87 | lr: 1.6e-05 | Memory: 17.0 GiB
+[11/27/2023 16:01:30] {train.py:147} INFO - 672 / 1000 | loss/reader_loss: 2.01e-05 | loss/retriever_loss: 0.0422 | loss/train_loss: 0.0422 | runtime/backward: 0.623 | runtime/forward: 0.582 | runtime/model_update: 0.242 | runtime/retrieve: 0.0119 | runtime/search: 0.00156 | runtime/train_step: 1.45 | lr: 1.6e-05 | Memory: 17.0 GiB
+[11/27/2023 16:01:35] {train.py:147} INFO - 676 / 1000 | loss/reader_loss: 0.00946 | loss/retriever_loss: 0.0261 | loss/train_loss: 0.0355 | runtime/backward: 0.583 | runtime/forward: 0.553 | runtime/model_update: 0.168 | runtime/retrieve: 0.0117 | runtime/search: 0.00149 | runtime/train_step: 1.3 | lr: 1.6e-05 | Memory: 17.0 GiB
+[11/27/2023 16:01:40] {train.py:147} INFO - 680 / 1000 | loss/reader_loss: 0.211 | loss/retriever_loss: 0.0347 | loss/train_loss: 0.246 | runtime/backward: 0.583 | runtime/forward: 0.555 | runtime/model_update: 0.169 | runtime/retrieve: 0.0116 | runtime/search: 0.00147 | runtime/train_step: 1.31 | lr: 1.6e-05 | Memory: 17.0 GiB
+[11/27/2023 16:01:46] {train.py:147} INFO - 684 / 1000 | loss/reader_loss: 0.789 | loss/retriever_loss: 0.0427 | loss/train_loss: 0.832 | runtime/backward: 0.583 | runtime/forward: 0.554 | runtime/model_update: 0.168 | runtime/retrieve: 0.0117 | runtime/search: 0.00147 | runtime/train_step: 1.3 | lr: 1.5e-05 | Memory: 17.0 GiB
+[11/27/2023 16:01:51] {train.py:147} INFO - 688 / 1000 | loss/reader_loss: 0.00865 | loss/retriever_loss: 0.0255 | loss/train_loss: 0.0342 | runtime/backward: 0.582 | runtime/forward: 0.555 | runtime/model_update: 0.168 | runtime/retrieve: 0.0116 | runtime/search: 0.00144 | runtime/train_step: 1.31 | lr: 1.5e-05 | Memory: 17.0 GiB
+[11/27/2023 16:03:16] {util.py:249} INFO - Writing dataset with scores at /home/016029585/atlas/atlas_data/experiments/mcq_case_10/mcq_train_10/eval_data_50-step-690.jsonl
+[11/27/2023 16:03:16] {train.py:160} INFO - Dataset: eval_data_50.jsonl | 90.000 debiased_accuracy | 90.500 accuracy | 0.216 eval_loss
+[11/27/2023 16:03:35] {train.py:147} INFO - 692 / 1000 | loss/reader_loss: 0.789 | loss/retriever_loss: 0.0449 | loss/train_loss: 0.834 | runtime/backward: 0.701 | runtime/forward: 0.717 | runtime/model_update: 0.582 | runtime/retrieve: 0.022 | runtime/search: 0.0113 | runtime/train_step: 2 | lr: 1.5e-05 | Memory: 17.0 GiB
+[11/27/2023 16:03:45] {train.py:147} INFO - 696 / 1000 | loss/reader_loss: 0.00035 | loss/retriever_loss: 0.0109 | loss/train_loss: 0.0113 | runtime/backward: 0.753 | runtime/forward: 0.758 | runtime/model_update: 0.839 | runtime/retrieve: 0.0217 | runtime/search: 0.0114 | runtime/train_step: 2.35 | lr: 1.5e-05 | Memory: 17.0 GiB
+[11/27/2023 16:03:55] {train.py:147} INFO - 700 / 1000 | loss/reader_loss: 0.581 | loss/retriever_loss: 0.033 | loss/train_loss: 0.614 | runtime/backward: 0.819 | runtime/forward: 0.702 | runtime/model_update: 0.988 | runtime/retrieve: 0.0159 | runtime/search: 0.00533 | runtime/train_step: 2.51 | lr: 1.5e-05 | Memory: 17.0 GiB
+[11/27/2023 16:04:04] {train.py:147} INFO - 704 / 1000 | loss/reader_loss: 0.343 | loss/retriever_loss: 0.0124 | loss/train_loss: 0.355 | runtime/backward: 0.7 | runtime/forward: 0.781 | runtime/model_update: 0.869 | runtime/retrieve: 0.0169 | runtime/search: 0.00672 | runtime/train_step: 2.35 | lr: 1.5e-05 | Memory: 17.0 GiB
+[11/27/2023 16:04:13] {train.py:147} INFO - 708 / 1000 | loss/reader_loss: 0.0714 | loss/retriever_loss: 0.0163 | loss/train_loss: 0.0877 | runtime/backward: 0.714 | runtime/forward: 0.708 | runtime/model_update: 0.866 | runtime/retrieve: 0.0206 | runtime/search: 0.0106 | runtime/train_step: 2.29 | lr: 1.5e-05 | Memory: 17.0 GiB
+[11/27/2023 16:04:23] {train.py:147} INFO - 712 / 1000 | loss/reader_loss: 0.633 | loss/retriever_loss: 0.0487 | loss/train_loss: 0.682 | runtime/backward: 0.679 | runtime/forward: 0.799 | runtime/model_update: 0.886 | runtime/retrieve: 0.0153 | runtime/search: 0.00494 | runtime/train_step: 2.36 | lr: 1.4e-05 | Memory: 17.0 GiB
+[11/27/2023 16:04:32] {train.py:147} INFO - 716 / 1000 | loss/reader_loss: 0.000853 | loss/retriever_loss: 0.00855 | loss/train_loss: 0.0094 | runtime/backward: 0.695 | runtime/forward: 0.706 | runtime/model_update: 0.891 | runtime/retrieve: 0.0174 | runtime/search: 0.00598 | runtime/train_step: 2.29 | lr: 1.4e-05 | Memory: 17.0 GiB
+[11/27/2023 16:04:41] {train.py:147} INFO - 720 / 1000 | loss/reader_loss: 0.0022 | loss/retriever_loss: 0.0111 | loss/train_loss: 0.0133 | runtime/backward: 0.713 | runtime/forward: 0.725 | runtime/model_update: 0.903 | runtime/retrieve: 0.0152 | runtime/search: 0.00505 | runtime/train_step: 2.34 | lr: 1.4e-05 | Memory: 17.0 GiB
+[11/27/2023 16:06:28] {util.py:249} INFO - Writing dataset with scores at /home/016029585/atlas/atlas_data/experiments/mcq_case_10/mcq_train_10/eval_data_50-step-720.jsonl
+[11/27/2023 16:06:28] {train.py:160} INFO - Dataset: eval_data_50.jsonl | 90.000 debiased_accuracy | 89.000 accuracy | 0.215 eval_loss
+[11/27/2023 16:06:56] {train.py:147} INFO - 724 / 1000 | loss/reader_loss: 0.00236 | loss/retriever_loss: 0.0275 | loss/train_loss: 0.0299 | runtime/backward: 0.895 | runtime/forward: 1.06 | runtime/model_update: 1.32 | runtime/retrieve: 0.0225 | runtime/search: 0.0109 | runtime/train_step: 3.28 | lr: 1.4e-05 | Memory: 17.0 GiB
+[11/27/2023 16:07:09] {train.py:147} INFO - 728 / 1000 | loss/reader_loss: 0.000227 | loss/retriever_loss: 0.00675 | loss/train_loss: 0.00697 | runtime/backward: 0.895 | runtime/forward: 1.03 | runtime/model_update: 1.27 | runtime/retrieve: 0.024 | runtime/search: 0.0137 | runtime/train_step: 3.19 | lr: 1.4e-05 | Memory: 17.0 GiB
+[11/27/2023 16:07:21] {train.py:147} INFO - 732 / 1000 | loss/reader_loss: 0.00339 | loss/retriever_loss: 0.00888 | loss/train_loss: 0.0123 | runtime/backward: 0.9 | runtime/forward: 0.979 | runtime/model_update: 1.28 | runtime/retrieve: 0.0281 | runtime/search: 0.0179 | runtime/train_step: 3.16 | lr: 1.4e-05 | Memory: 17.0 GiB
+[11/27/2023 16:07:27] {train.py:147} INFO - 736 / 1000 | loss/reader_loss: 0.397 | loss/retriever_loss: 0.032 | loss/train_loss: 0.429 | runtime/backward: 0.577 | runtime/forward: 0.557 | runtime/model_update: 0.169 | runtime/retrieve: 0.0117 | runtime/search: 0.0015 | runtime/train_step: 1.3 | lr: 1.4e-05 | Memory: 17.0 GiB
+[11/27/2023 16:07:32] {train.py:147} INFO - 740 / 1000 | loss/reader_loss: 6.41e-05 | loss/retriever_loss: 0.0174 | loss/train_loss: 0.0175 | runtime/backward: 0.576 | runtime/forward: 0.557 | runtime/model_update: 0.168 | runtime/retrieve: 0.0117 | runtime/search: 0.00157 | runtime/train_step: 1.3 | lr: 1.3e-05 | Memory: 17.0 GiB
+[11/27/2023 16:07:37] {train.py:147} INFO - 744 / 1000 | loss/reader_loss: 0.119 | loss/retriever_loss: 0.0611 | loss/train_loss: 0.18 | runtime/backward: 0.576 | runtime/forward: 0.556 | runtime/model_update: 0.169 | runtime/retrieve: 0.0119 | runtime/search: 0.00147 | runtime/train_step: 1.3 | lr: 1.3e-05 | Memory: 17.0 GiB
+[11/27/2023 16:07:42] {train.py:147} INFO - 748 / 1000 | loss/reader_loss: 0.00947 | loss/retriever_loss: 0.0131 | loss/train_loss: 0.0225 | runtime/backward: 0.577 | runtime/forward: 0.557 | runtime/model_update: 0.172 | runtime/retrieve: 0.0117 | runtime/search: 0.00148 | runtime/train_step: 1.31 | lr: 1.3e-05 | Memory: 17.0 GiB
+[11/27/2023 16:09:11] {util.py:249} INFO - Writing dataset with scores at /home/016029585/atlas/atlas_data/experiments/mcq_case_10/mcq_train_10/eval_data_50-step-750.jsonl
+[11/27/2023 16:09:11] {train.py:160} INFO - Dataset: eval_data_50.jsonl | 90.000 debiased_accuracy | 89.500 accuracy | 0.240 eval_loss
+[11/27/2023 16:09:27] {train.py:147} INFO - 752 / 1000 | loss/reader_loss: 0.000367 | loss/retriever_loss: 0.016 | loss/train_loss: 0.0164 | runtime/backward: 0.593 | runtime/forward: 0.601 | runtime/model_update: 0.175 | runtime/retrieve: 0.0124 | runtime/search: 0.00169 | runtime/train_step: 1.37 | lr: 1.3e-05 | Memory: 17.0 GiB
+[11/27/2023 16:09:32] {train.py:147} INFO - 756 / 1000 | loss/reader_loss: 0.000361 | loss/retriever_loss: 0.0166 | loss/train_loss: 0.017 | runtime/backward: 0.573 | runtime/forward: 0.557 | runtime/model_update: 0.174 | runtime/retrieve: 0.0122 | runtime/search: 0.00155 | runtime/train_step: 1.31 | lr: 1.3e-05 | Memory: 17.0 GiB
+[11/27/2023 16:09:38] {train.py:147} INFO - 760 / 1000 | loss/reader_loss: 0.00037 | loss/retriever_loss: 0.0216 | loss/train_loss: 0.022 | runtime/backward: 0.618 | runtime/forward: 0.6 | runtime/model_update: 0.185 | runtime/retrieve: 0.0127 | runtime/search: 0.00215 | runtime/train_step: 1.4 | lr: 1.3e-05 | Memory: 17.0 GiB
+[11/27/2023 16:09:43] {train.py:147} INFO - 764 / 1000 | loss/reader_loss: 0.0632 | loss/retriever_loss: 0.0278 | loss/train_loss: 0.091 | runtime/backward: 0.576 | runtime/forward: 0.569 | runtime/model_update: 0.169 | runtime/retrieve: 0.012 | runtime/search: 0.00165 | runtime/train_step: 1.31 | lr: 1.3e-05 | Memory: 17.0 GiB
+[11/27/2023 16:09:51] {train.py:147} INFO - 768 / 1000 | loss/reader_loss: 0.278 | loss/retriever_loss: 0.0144 | loss/train_loss: 0.292 | runtime/backward: 0.721 | runtime/forward: 0.765 | runtime/model_update: 0.359 | runtime/retrieve: 0.0122 | runtime/search: 0.0016 | runtime/train_step: 1.85 | lr: 1.2e-05 | Memory: 17.0 GiB
+[11/27/2023 16:10:00] {train.py:147} INFO - 772 / 1000 | loss/reader_loss: 0.484 | loss/retriever_loss: 0.00845 | loss/train_loss: 0.492 | runtime/backward: 0.786 | runtime/forward: 0.673 | runtime/model_update: 0.919 | runtime/retrieve: 0.0154 | runtime/search: 0.00489 | runtime/train_step: 2.38 | lr: 1.2e-05 | Memory: 17.0 GiB
+[11/27/2023 16:10:09] {train.py:147} INFO - 776 / 1000 | loss/reader_loss: 0.000435 | loss/retriever_loss: 0.00514 | loss/train_loss: 0.00558 | runtime/backward: 0.692 | runtime/forward: 0.702 | runtime/model_update: 0.907 | runtime/retrieve: 0.0171 | runtime/search: 0.00698 | runtime/train_step: 2.3 | lr: 1.2e-05 | Memory: 17.0 GiB
+[11/27/2023 16:10:19] {train.py:147} INFO - 780 / 1000 | loss/reader_loss: 0.11 | loss/retriever_loss: 0.0353 | loss/train_loss: 0.145 | runtime/backward: 0.664 | runtime/forward: 0.815 | runtime/model_update: 0.883 | runtime/retrieve: 0.0153 | runtime/search: 0.00522 | runtime/train_step: 2.36 | lr: 1.2e-05 | Memory: 17.0 GiB
+[11/27/2023 16:12:12] {util.py:249} INFO - Writing dataset with scores at /home/016029585/atlas/atlas_data/experiments/mcq_case_10/mcq_train_10/eval_data_50-step-780.jsonl
+[11/27/2023 16:12:12] {train.py:160} INFO - Dataset: eval_data_50.jsonl | 90.000 debiased_accuracy | 90.500 accuracy | 0.232 eval_loss
+[11/27/2023 16:12:36] {train.py:147} INFO - 784 / 1000 | loss/reader_loss: 0.000226 | loss/retriever_loss: 0.0145 | loss/train_loss: 0.0147 | runtime/backward: 0.687 | runtime/forward: 0.715 | runtime/model_update: 0.96 | runtime/retrieve: 0.0168 | runtime/search: 0.0066 | runtime/train_step: 2.36 | lr: 1.2e-05 | Memory: 17.0 GiB
+[11/27/2023 16:12:46] {train.py:147} INFO - 788 / 1000 | loss/reader_loss: 0.0676 | loss/retriever_loss: 0.0474 | loss/train_loss: 0.115 | runtime/backward: 0.69 | runtime/forward: 0.702 | runtime/model_update: 0.941 | runtime/retrieve: 0.0176 | runtime/search: 0.00756 | runtime/train_step: 2.33 | lr: 1.2e-05 | Memory: 17.0 GiB
+[11/27/2023 16:12:55] {train.py:147} INFO - 792 / 1000 | loss/reader_loss: 0.495 | loss/retriever_loss: 0.0303 | loss/train_loss: 0.526 | runtime/backward: 0.667 | runtime/forward: 0.763 | runtime/model_update: 0.885 | runtime/retrieve: 0.0208 | runtime/search: 0.0107 | runtime/train_step: 2.31 | lr: 1.2e-05 | Memory: 17.0 GiB
+[11/27/2023 16:13:05] {train.py:147} INFO - 796 / 1000 | loss/reader_loss: 0.0231 | loss/retriever_loss: 0.0314 | loss/train_loss: 0.0545 | runtime/backward: 0.677 | runtime/forward: 0.785 | runtime/model_update: 0.939 | runtime/retrieve: 0.0151 | runtime/search: 0.00506 | runtime/train_step: 2.4 | lr: 1.1e-05 | Memory: 17.0 GiB
+[11/27/2023 16:13:14] {train.py:147} INFO - 800 / 1000 | loss/reader_loss: 0.917 | loss/retriever_loss: 0.0411 | loss/train_loss: 0.958 | runtime/backward: 0.69 | runtime/forward: 0.705 | runtime/model_update: 0.961 | runtime/retrieve: 0.016 | runtime/search: 0.00581 | runtime/train_step: 2.36 | lr: 1.1e-05 | Memory: 17.0 GiB
+[11/27/2023 16:13:24] {train.py:147} INFO - 804 / 1000 | loss/reader_loss: 0.0739 | loss/retriever_loss: 0.0354 | loss/train_loss: 0.109 | runtime/backward: 0.699 | runtime/forward: 0.701 | runtime/model_update: 0.955 | runtime/retrieve: 0.0174 | runtime/search: 0.00735 | runtime/train_step: 2.36 | lr: 1.1e-05 | Memory: 17.0 GiB
+[11/27/2023 16:13:31] {train.py:147} INFO - 808 / 1000 | loss/reader_loss: 6.12e-05 | loss/retriever_loss: 0.0119 | loss/train_loss: 0.012 | runtime/backward: 0.661 | runtime/forward: 0.626 | runtime/model_update: 0.51 | runtime/retrieve: 0.0138 | runtime/search: 0.00362 | runtime/train_step: 1.8 | lr: 1.1e-05 | Memory: 17.0 GiB
+[11/27/2023 16:14:57] {util.py:249} INFO - Writing dataset with scores at /home/016029585/atlas/atlas_data/experiments/mcq_case_10/mcq_train_10/eval_data_50-step-810.jsonl
+[11/27/2023 16:14:57] {train.py:160} INFO - Dataset: eval_data_50.jsonl | 90.000 debiased_accuracy | 90.500 accuracy | 0.259 eval_loss
+[11/27/2023 16:15:11] {train.py:147} INFO - 812 / 1000 | loss/reader_loss: 0.000163 | loss/retriever_loss: 0.0151 | loss/train_loss: 0.0153 | runtime/backward: 0.577 | runtime/forward: 0.569 | runtime/model_update: 0.166 | runtime/retrieve: 0.0121 | runtime/search: 0.0016 | runtime/train_step: 1.31 | lr: 1.1e-05 | Memory: 17.0 GiB
+[11/27/2023 16:15:16] {train.py:147} INFO - 816 / 1000 | loss/reader_loss: 0.473 | loss/retriever_loss: 0.0153 | loss/train_loss: 0.488 | runtime/backward: 0.575 | runtime/forward: 0.552 | runtime/model_update: 0.167 | runtime/retrieve: 0.0115 | runtime/search: 0.00147 | runtime/train_step: 1.29 | lr: 1.1e-05 | Memory: 17.0 GiB
+[11/27/2023 16:15:22] {train.py:147} INFO - 820 / 1000 | loss/reader_loss: 0.000253 | loss/retriever_loss: 0.0377 | loss/train_loss: 0.0379 | runtime/backward: 0.575 | runtime/forward: 0.553 | runtime/model_update: 0.168 | runtime/retrieve: 0.0116 | runtime/search: 0.00148 | runtime/train_step: 1.3 | lr: 1.1e-05 | Memory: 17.0 GiB
+[11/27/2023 16:15:27] {train.py:147} INFO - 824 / 1000 | loss/reader_loss: 0.000478 | loss/retriever_loss: 0.0146 | loss/train_loss: 0.0151 | runtime/backward: 0.61 | runtime/forward: 0.585 | runtime/model_update: 0.182 | runtime/retrieve: 0.0122 | runtime/search: 0.00163 | runtime/train_step: 1.38 | lr: 1e-05 | Memory: 17.0 GiB
+[11/27/2023 16:15:33] {train.py:147} INFO - 828 / 1000 | loss/reader_loss: 0.687 | loss/retriever_loss: 0.0401 | loss/train_loss: 0.727 | runtime/backward: 0.591 | runtime/forward: 0.582 | runtime/model_update: 0.171 | runtime/retrieve: 0.0122 | runtime/search: 0.00161 | runtime/train_step: 1.34 | lr: 1e-05 | Memory: 17.0 GiB
+[11/27/2023 16:15:39] {train.py:147} INFO - 832 / 1000 | loss/reader_loss: 0.618 | loss/retriever_loss: 0.0443 | loss/train_loss: 0.662 | runtime/backward: 0.664 | runtime/forward: 0.568 | runtime/model_update: 0.39 | runtime/retrieve: 0.0119 | runtime/search: 0.00159 | runtime/train_step: 1.62 | lr: 1e-05 | Memory: 17.0 GiB
+[11/27/2023 16:15:48] {train.py:147} INFO - 836 / 1000 | loss/reader_loss: 0.509 | loss/retriever_loss: 0.0473 | loss/train_loss: 0.556 | runtime/backward: 0.661 | runtime/forward: 0.735 | runtime/model_update: 0.869 | runtime/retrieve: 0.0156 | runtime/search: 0.00544 | runtime/train_step: 2.26 | lr: 9.9e-06 | Memory: 17.0 GiB
+[11/27/2023 16:15:58] {train.py:147} INFO - 840 / 1000 | loss/reader_loss: 0.0167 | loss/retriever_loss: 0.021 | loss/train_loss: 0.0376 | runtime/backward: 0.746 | runtime/forward: 0.72 | runtime/model_update: 0.879 | runtime/retrieve: 0.0169 | runtime/search: 0.00691 | runtime/train_step: 2.35 | lr: 9.8e-06 | Memory: 17.0 GiB
+[11/27/2023 16:17:52] {util.py:249} INFO - Writing dataset with scores at /home/016029585/atlas/atlas_data/experiments/mcq_case_10/mcq_train_10/eval_data_50-step-840.jsonl
+[11/27/2023 16:17:52] {train.py:160} INFO - Dataset: eval_data_50.jsonl | 90.000 debiased_accuracy | 90.500 accuracy | 0.227 eval_loss
+[11/27/2023 16:18:19] {train.py:147} INFO - 844 / 1000 | loss/reader_loss: 0.00879 | loss/retriever_loss: 0.0272 | loss/train_loss: 0.036 | runtime/backward: 0.689 | runtime/forward: 0.736 | runtime/model_update: 0.947 | runtime/retrieve: 0.0148 | runtime/search: 0.00453 | runtime/train_step: 2.37 | lr: 9.6e-06 | Memory: 17.0 GiB
+[11/27/2023 16:18:28] {train.py:147} INFO - 848 / 1000 | loss/reader_loss: 0.243 | loss/retriever_loss: 0.0383 | loss/train_loss: 0.281 | runtime/backward: 0.693 | runtime/forward: 0.722 | runtime/model_update: 0.988 | runtime/retrieve: 0.016 | runtime/search: 0.0059 | runtime/train_step: 2.4 | lr: 9.5e-06 | Memory: 17.0 GiB
+[11/27/2023 16:18:38] {train.py:147} INFO - 852 / 1000 | loss/reader_loss: 0.647 | loss/retriever_loss: 0.0355 | loss/train_loss: 0.682 | runtime/backward: 0.705 | runtime/forward: 0.706 | runtime/model_update: 0.974 | runtime/retrieve: 0.0169 | runtime/search: 0.00659 | runtime/train_step: 2.39 | lr: 9.4e-06 | Memory: 17.0 GiB
+[11/27/2023 16:18:47] {train.py:147} INFO - 856 / 1000 | loss/reader_loss: 0.0429 | loss/retriever_loss: 0.0173 | loss/train_loss: 0.0602 | runtime/backward: 0.686 | runtime/forward: 0.766 | runtime/model_update: 0.934 | runtime/retrieve: 0.0175 | runtime/search: 0.00709 | runtime/train_step: 2.39 | lr: 9.2e-06 | Memory: 17.0 GiB
+[11/27/2023 16:18:59] {train.py:147} INFO - 860 / 1000 | loss/reader_loss: 0.0128 | loss/retriever_loss: 0.0193 | loss/train_loss: 0.0321 | runtime/backward: 0.896 | runtime/forward: 0.857 | runtime/model_update: 1.1 | runtime/retrieve: 0.0155 | runtime/search: 0.00506 | runtime/train_step: 2.85 | lr: 9.1e-06 | Memory: 17.0 GiB
+[11/27/2023 16:19:12] {train.py:147} INFO - 864 / 1000 | loss/reader_loss: 0.000182 | loss/retriever_loss: 0.0235 | loss/train_loss: 0.0237 | runtime/backward: 0.753 | runtime/forward: 0.773 | runtime/model_update: 1.76 | runtime/retrieve: 0.019 | runtime/search: 0.00871 | runtime/train_step: 3.29 | lr: 8.9e-06 | Memory: 17.0 GiB
+[11/27/2023 16:19:25] {train.py:147} INFO - 868 / 1000 | loss/reader_loss: 0.0875 | loss/retriever_loss: 0.00406 | loss/train_loss: 0.0916 | runtime/backward: 0.78 | runtime/forward: 0.808 | runtime/model_update: 1.71 | runtime/retrieve: 0.0195 | runtime/search: 0.00882 | runtime/train_step: 3.29 | lr: 8.8e-06 | Memory: 17.0 GiB
+[11/27/2023 16:21:40] {util.py:249} INFO - Writing dataset with scores at /home/016029585/atlas/atlas_data/experiments/mcq_case_10/mcq_train_10/eval_data_50-step-870.jsonl
+[11/27/2023 16:21:40] {train.py:160} INFO - Dataset: eval_data_50.jsonl | 90.000 debiased_accuracy | 90.500 accuracy | 0.240 eval_loss
+[11/27/2023 16:21:57] {train.py:147} INFO - 872 / 1000 | loss/reader_loss: 0.00305 | loss/retriever_loss: 0.0515 | loss/train_loss: 0.0546 | runtime/backward: 0.675 | runtime/forward: 0.724 | runtime/model_update: 0.918 | runtime/retrieve: 0.0179 | runtime/search: 0.00734 | runtime/train_step: 2.32 | lr: 8.6e-06 | Memory: 17.0 GiB
+[11/27/2023 16:22:02] {train.py:147} INFO - 876 / 1000 | loss/reader_loss: 0.000644 | loss/retriever_loss: 0.0128 | loss/train_loss: 0.0134 | runtime/backward: 0.574 | runtime/forward: 0.553 | runtime/model_update: 0.165 | runtime/retrieve: 0.0116 | runtime/search: 0.00148 | runtime/train_step: 1.29 | lr: 8.5e-06 | Memory: 17.0 GiB
+[11/27/2023 16:22:07] {train.py:147} INFO - 880 / 1000 | loss/reader_loss: 0.00946 | loss/retriever_loss: 0.0105 | loss/train_loss: 0.0199 | runtime/backward: 0.575 | runtime/forward: 0.554 | runtime/model_update: 0.167 | runtime/retrieve: 0.0116 | runtime/search: 0.00148 | runtime/train_step: 1.3 | lr: 8.3e-06 | Memory: 17.0 GiB
+[11/27/2023 16:22:13] {train.py:147} INFO - 884 / 1000 | loss/reader_loss: 0.00762 | loss/retriever_loss: 0.0322 | loss/train_loss: 0.0398 | runtime/backward: 0.574 | runtime/forward: 0.555 | runtime/model_update: 0.17 | runtime/retrieve: 0.0116 | runtime/search: 0.00144 | runtime/train_step: 1.3 | lr: 8.2e-06 | Memory: 17.0 GiB
+[11/27/2023 16:22:18] {train.py:147} INFO - 888 / 1000 | loss/reader_loss: 4.42e-05 | loss/retriever_loss: 0.0151 | loss/train_loss: 0.0151 | runtime/backward: 0.576 | runtime/forward: 0.555 | runtime/model_update: 0.168 | runtime/retrieve: 0.012 | runtime/search: 0.00152 | runtime/train_step: 1.3 | lr: 8.1e-06 | Memory: 17.0 GiB
+[11/27/2023 16:22:23] {train.py:147} INFO - 892 / 1000 | loss/reader_loss: 9.18e-05 | loss/retriever_loss: 0.0288 | loss/train_loss: 0.0289 | runtime/backward: 0.576 | runtime/forward: 0.557 | runtime/model_update: 0.176 | runtime/retrieve: 0.0119 | runtime/search: 0.00155 | runtime/train_step: 1.31 | lr: 7.9e-06 | Memory: 17.0 GiB
+[11/27/2023 16:22:28] {train.py:147} INFO - 896 / 1000 | loss/reader_loss: 0.65 | loss/retriever_loss: 0.0346 | loss/train_loss: 0.684 | runtime/backward: 0.576 | runtime/forward: 0.558 | runtime/model_update: 0.179 | runtime/retrieve: 0.0122 | runtime/search: 0.00156 | runtime/train_step: 1.31 | lr: 7.8e-06 | Memory: 17.0 GiB
+[11/27/2023 16:22:34] {train.py:147} INFO - 900 / 1000 | loss/reader_loss: 0.00032 | loss/retriever_loss: 0.00746 | loss/train_loss: 0.00778 | runtime/backward: 0.576 | runtime/forward: 0.559 | runtime/model_update: 0.176 | runtime/retrieve: 0.0121 | runtime/search: 0.00149 | runtime/train_step: 1.31 | lr: 7.6e-06 | Memory: 17.0 GiB
+[11/27/2023 16:24:13] {util.py:249} INFO - Writing dataset with scores at /home/016029585/atlas/atlas_data/experiments/mcq_case_10/mcq_train_10/eval_data_50-step-900.jsonl
+[11/27/2023 16:24:13] {train.py:160} INFO - Dataset: eval_data_50.jsonl | 90.000 debiased_accuracy | 90.500 accuracy | 0.265 eval_loss
+[11/27/2023 16:24:36] {train.py:147} INFO - 904 / 1000 | loss/reader_loss: 0.000127 | loss/retriever_loss: 0.0127 | loss/train_loss: 0.0128 | runtime/backward: 0.695 | runtime/forward: 0.696 | runtime/model_update: 0.972 | runtime/retrieve: 0.016 | runtime/search: 0.00589 | runtime/train_step: 2.36 | lr: 7.5e-06 | Memory: 17.0 GiB
+[11/27/2023 16:24:46] {train.py:147} INFO - 908 / 1000 | loss/reader_loss: 8.16e-05 | loss/retriever_loss: 0.00619 | loss/train_loss: 0.00627 | runtime/backward: 0.696 | runtime/forward: 0.704 | runtime/model_update: 0.982 | runtime/retrieve: 0.016 | runtime/search: 0.00578 | runtime/train_step: 2.38 | lr: 7.3e-06 | Memory: 17.0 GiB
+[11/27/2023 16:24:55] {train.py:147} INFO - 912 / 1000 | loss/reader_loss: 0.00502 | loss/retriever_loss: 0.018 | loss/train_loss: 0.023 | runtime/backward: 0.681 | runtime/forward: 0.768 | runtime/model_update: 0.88 | runtime/retrieve: 0.0191 | runtime/search: 0.00871 | runtime/train_step: 2.33 | lr: 7.2e-06 | Memory: 17.0 GiB
+[11/27/2023 16:25:04] {train.py:147} INFO - 916 / 1000 | loss/reader_loss: 0.00517 | loss/retriever_loss: 0.0268 | loss/train_loss: 0.0319 | runtime/backward: 0.695 | runtime/forward: 0.775 | runtime/model_update: 0.91 | runtime/retrieve: 0.0152 | runtime/search: 0.00507 | runtime/train_step: 2.38 | lr: 7e-06 | Memory: 17.0 GiB
+[11/27/2023 16:25:14] {train.py:147} INFO - 920 / 1000 | loss/reader_loss: 0.000443 | loss/retriever_loss: 0.0185 | loss/train_loss: 0.019 | runtime/backward: 0.691 | runtime/forward: 0.701 | runtime/model_update: 0.955 | runtime/retrieve: 0.0173 | runtime/search: 0.00719 | runtime/train_step: 2.35 | lr: 6.9e-06 | Memory: 17.0 GiB
+[11/27/2023 16:25:23] {train.py:147} INFO - 924 / 1000 | loss/reader_loss: 0.59 | loss/retriever_loss: 0.0343 | loss/train_loss: 0.624 | runtime/backward: 0.693 | runtime/forward: 0.703 | runtime/model_update: 0.981 | runtime/retrieve: 0.0158 | runtime/search: 0.00573 | runtime/train_step: 2.38 | lr: 6.7e-06 | Memory: 17.0 GiB
+[11/27/2023 16:25:33] {train.py:147} INFO - 928 / 1000 | loss/reader_loss: 0.000141 | loss/retriever_loss: 0.0151 | loss/train_loss: 0.0152 | runtime/backward: 0.693 | runtime/forward: 0.708 | runtime/model_update: 0.971 | runtime/retrieve: 0.0169 | runtime/search: 0.0068 | runtime/train_step: 2.37 | lr: 6.6e-06 | Memory: 17.0 GiB
+[11/27/2023 16:27:31] {util.py:249} INFO - Writing dataset with scores at /home/016029585/atlas/atlas_data/experiments/mcq_case_10/mcq_train_10/eval_data_50-step-930.jsonl
+[11/27/2023 16:27:32] {train.py:160} INFO - Dataset: eval_data_50.jsonl | 90.000 debiased_accuracy | 90.500 accuracy | 0.272 eval_loss
+[11/27/2023 16:27:49] {train.py:147} INFO - 932 / 1000 | loss/reader_loss: 0.418 | loss/retriever_loss: 0.01 | loss/train_loss: 0.428 | runtime/backward: 0.691 | runtime/forward: 0.704 | runtime/model_update: 0.965 | runtime/retrieve: 0.016 | runtime/search: 0.00584 | runtime/train_step: 2.36 | lr: 6.5e-06 | Memory: 17.0 GiB
+[11/27/2023 16:27:58] {train.py:147} INFO - 936 / 1000 | loss/reader_loss: 0.00384 | loss/retriever_loss: 0.0215 | loss/train_loss: 0.0254 | runtime/backward: 0.679 | runtime/forward: 0.75 | runtime/model_update: 0.895 | runtime/retrieve: 0.0163 | runtime/search: 0.0062 | runtime/train_step: 2.32 | lr: 6.3e-06 | Memory: 17.0 GiB
+[11/27/2023 16:28:08] {train.py:147} INFO - 940 / 1000 | loss/reader_loss: 2.68e-05 | loss/retriever_loss: 0.00676 | loss/train_loss: 0.00679 | runtime/backward: 0.704 | runtime/forward: 0.782 | runtime/model_update: 0.905 | runtime/retrieve: 0.0149 | runtime/search: 0.00477 | runtime/train_step: 2.39 | lr: 6.2e-06 | Memory: 17.0 GiB
+[11/27/2023 16:28:17] {train.py:147} INFO - 944 / 1000 | loss/reader_loss: 0.699 | loss/retriever_loss: 0.016 | loss/train_loss: 0.715 | runtime/backward: 0.711 | runtime/forward: 0.707 | runtime/model_update: 0.968 | runtime/retrieve: 0.0163 | runtime/search: 0.00581 | runtime/train_step: 2.39 | lr: 6e-06 | Memory: 17.0 GiB
+[11/27/2023 16:28:27] {train.py:147} INFO - 948 / 1000 | loss/reader_loss: 0.000141 | loss/retriever_loss: 0.0103 | loss/train_loss: 0.0104 | runtime/backward: 0.704 | runtime/forward: 0.732 | runtime/model_update: 0.975 | runtime/retrieve: 0.0173 | runtime/search: 0.0067 | runtime/train_step: 2.41 | lr: 5.9e-06 | Memory: 17.0 GiB
+[11/27/2023 16:28:35] {train.py:147} INFO - 952 / 1000 | loss/reader_loss: 0.000669 | loss/retriever_loss: 0.0111 | loss/train_loss: 0.0118 | runtime/backward: 0.665 | runtime/forward: 0.631 | runtime/model_update: 0.564 | runtime/retrieve: 0.0141 | runtime/search: 0.00365 | runtime/train_step: 1.86 | lr: 5.7e-06 | Memory: 17.0 GiB
+[11/27/2023 16:28:41] {train.py:147} INFO - 956 / 1000 | loss/reader_loss: 0.00013 | loss/retriever_loss: 0.013 | loss/train_loss: 0.0131 | runtime/backward: 0.642 | runtime/forward: 0.632 | runtime/model_update: 0.202 | runtime/retrieve: 0.0136 | runtime/search: 0.0021 | runtime/train_step: 1.48 | lr: 5.6e-06 | Memory: 17.0 GiB
+[11/27/2023 16:28:46] {train.py:147} INFO - 960 / 1000 | loss/reader_loss: 0.000919 | loss/retriever_loss: 0.00549 | loss/train_loss: 0.00641 | runtime/backward: 0.619 | runtime/forward: 0.583 | runtime/model_update: 0.185 | runtime/retrieve: 0.0122 | runtime/search: 0.00171 | runtime/train_step: 1.39 | lr: 5.4e-06 | Memory: 17.0 GiB
+[11/27/2023 16:30:14] {util.py:249} INFO - Writing dataset with scores at /home/016029585/atlas/atlas_data/experiments/mcq_case_10/mcq_train_10/eval_data_50-step-960.jsonl
+[11/27/2023 16:30:14] {train.py:160} INFO - Dataset: eval_data_50.jsonl | 90.000 debiased_accuracy | 90.500 accuracy | 0.278 eval_loss
+[11/27/2023 16:30:33] {train.py:147} INFO - 964 / 1000 | loss/reader_loss: 0.00373 | loss/retriever_loss: 0.00734 | loss/train_loss: 0.0111 | runtime/backward: 0.587 | runtime/forward: 0.6 | runtime/model_update: 0.188 | runtime/retrieve: 0.0199 | runtime/search: 0.00883 | runtime/train_step: 1.38 | lr: 5.3e-06 | Memory: 17.0 GiB
+[11/27/2023 16:30:38] {train.py:147} INFO - 968 / 1000 | loss/reader_loss: 0.337 | loss/retriever_loss: 0.0378 | loss/train_loss: 0.375 | runtime/backward: 0.618 | runtime/forward: 0.607 | runtime/model_update: 0.189 | runtime/retrieve: 0.0121 | runtime/search: 0.00161 | runtime/train_step: 1.41 | lr: 5.2e-06 | Memory: 17.0 GiB
+[11/27/2023 16:30:44] {train.py:147} INFO - 972 / 1000 | loss/reader_loss: 0.0251 | loss/retriever_loss: 0.0135 | loss/train_loss: 0.0386 | runtime/backward: 0.576 | runtime/forward: 0.587 | runtime/model_update: 0.193 | runtime/retrieve: 0.013 | runtime/search: 0.00168 | runtime/train_step: 1.36 | lr: 5e-06 | Memory: 17.0 GiB
+[11/27/2023 16:30:49] {train.py:147} INFO - 976 / 1000 | loss/reader_loss: 6.88e-05 | loss/retriever_loss: 0.019 | loss/train_loss: 0.0191 | runtime/backward: 0.595 | runtime/forward: 0.584 | runtime/model_update: 0.176 | runtime/retrieve: 0.0124 | runtime/search: 0.00195 | runtime/train_step: 1.36 | lr: 4.9e-06 | Memory: 17.0 GiB
+[11/27/2023 16:30:55] {train.py:147} INFO - 980 / 1000 | loss/reader_loss: 4.43e-05 | loss/retriever_loss: 0.0033 | loss/train_loss: 0.00334 | runtime/backward: 0.603 | runtime/forward: 0.592 | runtime/model_update: 0.179 | runtime/retrieve: 0.0121 | runtime/search: 0.00161 | runtime/train_step: 1.37 | lr: 4.7e-06 | Memory: 17.0 GiB
+[11/27/2023 16:31:00] {train.py:147} INFO - 984 / 1000 | loss/reader_loss: 0.000198 | loss/retriever_loss: 0.0139 | loss/train_loss: 0.0141 | runtime/backward: 0.633 | runtime/forward: 0.565 | runtime/model_update: 0.196 | runtime/retrieve: 0.0126 | runtime/search: 0.00165 | runtime/train_step: 1.39 | lr: 4.6e-06 | Memory: 17.0 GiB
+[11/27/2023 16:31:06] {train.py:147} INFO - 988 / 1000 | loss/reader_loss: 8.88e-05 | loss/retriever_loss: 0.0134 | loss/train_loss: 0.0135 | runtime/backward: 0.63 | runtime/forward: 0.603 | runtime/model_update: 0.186 | runtime/retrieve: 0.0123 | runtime/search: 0.00167 | runtime/train_step: 1.42 | lr: 4.4e-06 | Memory: 17.0 GiB
+[11/27/2023 16:33:03] {util.py:249} INFO - Writing dataset with scores at /home/016029585/atlas/atlas_data/experiments/mcq_case_10/mcq_train_10/eval_data_50-step-990.jsonl
+[11/27/2023 16:33:03] {train.py:160} INFO - Dataset: eval_data_50.jsonl | 90.000 debiased_accuracy | 90.000 accuracy | 0.290 eval_loss
+[11/27/2023 16:33:21] {train.py:147} INFO - 992 / 1000 | loss/reader_loss: 0.00316 | loss/retriever_loss: 0.0173 | loss/train_loss: 0.0205 | runtime/backward: 0.666 | runtime/forward: 0.626 | runtime/model_update: 0.511 | runtime/retrieve: 0.0145 | runtime/search: 0.00362 | runtime/train_step: 1.8 | lr: 4.3e-06 | Memory: 17.0 GiB
+[11/27/2023 16:33:30] {train.py:147} INFO - 996 / 1000 | loss/reader_loss: 0.00218 | loss/retriever_loss: 0.0296 | loss/train_loss: 0.0317 | runtime/backward: 0.721 | runtime/forward: 0.717 | runtime/model_update: 0.902 | runtime/retrieve: 0.0211 | runtime/search: 0.0109 | runtime/train_step: 2.34 | lr: 4.1e-06 | Memory: 17.0 GiB
+[11/27/2023 16:33:40] {train.py:147} INFO - 1000 / 1000 | loss/reader_loss: 0.000147 | loss/retriever_loss: 0.0288 | loss/train_loss: 0.0289 | runtime/backward: 0.689 | runtime/forward: 0.719 | runtime/model_update: 0.962 | runtime/retrieve: 0.0176 | runtime/search: 0.00741 | runtime/train_step: 2.37 | lr: 4e-06 | Memory: 17.0 GiB
